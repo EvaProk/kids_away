@@ -1,6 +1,8 @@
 import './index.scss';
-import FirstPage from './components/FirstPage'
+// import FirstPage from './components/FirstPage'
 import Navbar from './components/Navbar'
+import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router }  from "react-router-dom";
 
@@ -33,8 +35,9 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Router>
-          {/* <Navbar /> */}
-          <FirstPage />
+          <Navbar />
+          {/* <FirstPage /> */}
+          <SearchBabysitter/>
         </Router>
       </ThemeProvider>
     </div>
