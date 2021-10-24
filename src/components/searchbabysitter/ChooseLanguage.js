@@ -42,7 +42,7 @@ export default function ChooseLanguage() {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 238 }}>
+      <FormControl sx={{ m: 1, width: 260 }}>
         <InputLabel id="demo-multiple-checkbox-label">Language</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"

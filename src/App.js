@@ -1,10 +1,10 @@
 import './index.scss';
-// import FirstPage from './components/FirstPage'
+import FirstPage from './components/FirstPage'
 import Navbar from './components/Navbar'
 import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { BrowserRouter as Router }  from "react-router-dom";
+import { BrowserRouter as Router, Switch,Route }  from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -32,15 +32,24 @@ const theme = createTheme({
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Router>
-          <Navbar />
-          {/* <FirstPage /> */}
-          <SearchBabysitter/>
-        </Router>
+      <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <FirstPage />
+          </Route>
+          <Route path="/searchBabysitters">
+            <SearchBabysitter/>
+          </Route>
+          
+       
+        </Switch>
+          
       </ThemeProvider>
     </div>
+    </Router>
   );
 }
 

@@ -42,7 +42,7 @@ export default function ChooseActivity() {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 238 }}>
+      <FormControl sx={{ m: 1, width: 260 }}>
         <InputLabel id="demo-multiple-checkbox-label">Activity</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"

@@ -11,7 +11,7 @@ export default function ChooseDate(props) {
 
   return (
     
-      <LocalizationProvider dateAdapter={AdapterDateFns} >
+      <LocalizationProvider sx={{ m: 1, width: 260 }} dateAdapter={AdapterDateFns} >
         <DatePicker
           label="Choose Date"
           value={value}
