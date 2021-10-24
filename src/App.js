@@ -1,6 +1,8 @@
 import './index.scss';
 import FirstPage from './components/FirstPage'
+import Navbar from './components/Navbar'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { BrowserRouter as Router }  from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -18,15 +20,22 @@ const theme = createTheme({
       },
     
     },
+    typography: {
+      fontFamily: [
+        'Baloo Tamma 2'
+      ].join(','),
+    }
+  
 });
 
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-
-     
-      <FirstPage/>
+        <Router>
+          {/* <Navbar /> */}
+          <FirstPage />
+        </Router>
       </ThemeProvider>
     </div>
   );

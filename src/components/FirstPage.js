@@ -2,6 +2,7 @@ import React from "react";
 import "./FirstPage.scss";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
 
 
 export default function FirstPage(props) {
@@ -9,9 +10,9 @@ export default function FirstPage(props) {
   return (
    <div className="main">
      <img
-     className="logo"
+     className="frontImage"
      src= "images/logo.png"
-     alt="logo">
+     alt="frontImage">
      </img>
      <div className="heading">
        <h1 className="first">Perfect </h1>
@@ -19,8 +20,8 @@ export default function FirstPage(props) {
        <h1 className="third">is Here</h1>
      </div>
      <Stack spacing={5} direction="row">
-      <Button variant="contained" style={{width:"50%"}}>I'm a Parent</Button>
-      <Button variant="contained" style={{width:"50%"}}>I'm a Babysitter</Button>
+      <Button variant="contained" component={Link} to="/searchBabysitters" style={{width:"50%"}}>I'm a Parent</Button>
+      <Button variant="contained" component={Link} to="/babysitterCabinet"style={{width:"50%"}}>I'm a Babysitter</Button>
     </Stack>
    </div>
   );
