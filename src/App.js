@@ -2,6 +2,8 @@ import './index.scss';
 import FirstPage from './components/FirstPage'
 import Navbar from './components/Navbar'
 import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
+import BabysitterProfile from './components/babysitterprofile/BabysitterProfile'
+
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch,Route }  from "react-router-dom";
@@ -34,6 +36,7 @@ function App() {
   return (
     <Router>
     <div className="App">
+      
       <ThemeProvider theme={theme}>
       <Navbar />
         <Switch>
@@ -42,6 +45,9 @@ function App() {
           </Route>
           <Route path="/searchBabysitters">
             <SearchBabysitter/>
+          </Route>
+          <Route path="/babysitter-profile">
+            <BabysitterProfile/>
           </Route>
           
        

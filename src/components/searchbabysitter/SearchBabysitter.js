@@ -14,6 +14,8 @@ import ChooseActivity from '../searchbabysitter/ChooseActivity'
 import ChooseAge from '../searchbabysitter/ChooseAge'
 import ChooseCity from '../searchbabysitter/ChooseCity'
 import CardItem from '../searchbabysitter/CardItem'
+import Grid from '@mui/material/Grid';
+
 
 
 
@@ -28,7 +30,7 @@ import CardItem from '../searchbabysitter/CardItem'
 export default function SearchBabysitter(props) {
 
   return (
-    <div>
+    <div className="searchPage">
       <div className="search">
         <h2 > Choose Date</h2>
         <ChooseDate />
@@ -46,7 +48,23 @@ export default function SearchBabysitter(props) {
         <h2 > What are we doing today?</h2>
         <ChooseActivity />
       </div>
-      <div className="BabysitterList">
+      <div className="babysitterList">
+        <Grid container >
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <CardItem />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <CardItem />
+          </Grid><Grid item sm={6} xs={12} md={4} lg={3}>
+            <CardItem />
+          </Grid><Grid item sm={6} xs={12} md={4} lg={3}>
+            <CardItem />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <CardItem />
+          </Grid>
+        </Grid>
+
 
       </div>
     </div>

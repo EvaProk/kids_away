@@ -1,0 +1,43 @@
+@import "styles/variables.scss";
+
+
+.mainProfile{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  width:80%;
+  border: 1px solid $green-font;
+  border-radius: 15px;
+  margin:1em;
+  padding-bottom: 1em;
+}
+
+.avatar{
+  // margin-top:-100px;
+  border-radius: 50%;
+  width:20rem;
+  height:auto;
+  
+}
+.avatarImage{
+  margin-top:-30px;
+  border-radius: 50%;
+  width:20rem;
+  height: auto;
+}
+
+.rating{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%
+}
+
+.serviceCards{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%
+}
