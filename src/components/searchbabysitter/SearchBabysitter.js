@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBabysitter.scss";
 import Button from '@mui/material/Button';
 // import { AccountCircleOutlined , FavoriteBorderOutlined , EmailOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
+import axios from "axios";
 
 import ChooseDate from '../searchbabysitter/ChooseDate'
 import ChooseStartTime from '../searchbabysitter/ChooseStartTime'
@@ -18,16 +19,22 @@ import Grid from '@mui/material/Grid';
 
 
 
-
-
-
-
-
-
-
-
-
 export default function SearchBabysitter(props) {
+  console.log('I am here, Front');
+  const [state, setState] = useState({
+  
+    sitters: []
+  });
+
+  useEffect(()=>{
+    return axios.get('/searchBabysitters')
+    .then((res)=>{
+        setState((prev)=>({
+          ...prev, sitters: res.data
+        }));
+      })
+    },[setState.sitters])
+
 
   return (
     <div className="searchPage">
@@ -48,6 +55,7 @@ export default function SearchBabysitter(props) {
         <h2 > What are we doing today?</h2>
         <ChooseActivity />
       </div>
+
       <div className="babysitterList">
         <Grid container >
           <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -66,7 +74,12 @@ export default function SearchBabysitter(props) {
         </Grid>
 
 
+      <div className="BabysitterList">
+        {state.sitters.map(sitter =>  <div>{sitter.first_name}</div>)}
+
+
       </div>
+      
     </div>
   );
 };
