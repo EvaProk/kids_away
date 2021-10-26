@@ -15,7 +15,7 @@ import {StarOutline , AccessTime, PersonOutline, FavoriteBorder}   from '@mui/ic
 
 
 
-export default function CardItem() {
+export default function CardItem(props) {
   return (
     <Card sx={{ maxWidth: 345 }}  style={{ margin:"10px" }}>
       <CardHeader
@@ -27,19 +27,19 @@ export default function CardItem() {
             <FavoriteBorder color="primary" />
           </IconButton>
         }
-        subheader="Kate L."
+        subheader={props.name}
       />
       <CardActionArea component={Link} to="/babysitter-profile">
         <CardMedia
           component="img"
           height="200"
-          image="images/face.jpeg"
+          image={props.image}
           alt="babysitterCard"
         />
 
         <CardContent style={{ justifyContent: "space-evenly", display: "flex", flexDirection: "row" }} >
           <Grid container direction="column" alignItems="center">
-            <StarOutline color="secondary" /><p >Orders</p>
+            <StarOutline color="secondary" /><p >{props.orders}Orders</p>
           </Grid>
           <Grid container direction="column" alignItems="center">
             <AccessTime color="secondary" /><p>With kids </p>
