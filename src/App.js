@@ -2,6 +2,7 @@ import './index.scss';
 import FirstPage from './components/FirstPage'
 import Navbar from './components/Navbar'
 import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
+import Favourites from './components/Favourites';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch,Route }  from "react-router-dom";
@@ -42,9 +43,10 @@ function App() {
           </Route>
           <Route path="/searchBabysitters">
             <SearchBabysitter/>
-          </Route>
-          
-       
+          </Route>   
+          <Route path="/favourites">
+            <Favourites/>
+          </Route>     
         </Switch>
           
       </ThemeProvider>
