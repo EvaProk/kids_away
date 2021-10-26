@@ -21,7 +21,7 @@ export default function FirstPage(props) {
      </div>
      <Stack spacing={5} direction="row">
       <Button variant="contained" component={Link} to="/searchBabysitters" style={{width:"50%"}}>I'm a Parent</Button>
-      <Button variant="contained" component={Link} to="/babysitterCabinet"style={{width:"50%"}}>I'm a Babysitter</Button>
+      <Button variant="contained" component={Link} to="/babysitterCabinet" style={{width:"50%"}}>I'm a Babysitter</Button>
     </Stack>
    </div>
   );

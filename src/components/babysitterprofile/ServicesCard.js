@@ -9,8 +9,12 @@ import Grid from '@mui/material/Grid';
 export default function ServicesCard() {
   return (
     <div> 
-      <Grid container style={{ justifyContent: "space-between", display: "flex", flexDirection: "row" }} >
-        <Grid item xs={6} sm={4} md={4} lg={3}>
+      <Grid container 
+      direction="row"
+      alignItems="center"
+      justify="space-between"
+      width="80%" >
+        <Grid item xs={6} sm={4} md={4} lg={4}>
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"
@@ -28,7 +32,7 @@ export default function ServicesCard() {
           </Card>
         </Grid>
 
-        <Grid item xs={6} sm={4} md={4} lg={3}>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"
@@ -46,12 +50,11 @@ export default function ServicesCard() {
           </Card>
         </Grid>
 
-        <Grid item xs={6} sm={4} md={4} lg={3}>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"
               width="120"
-
               image="images/outside.jpg"
               alt="Overnight"
             />
@@ -63,7 +66,7 @@ export default function ServicesCard() {
           </Card>
         </Grid>
 
-        <Grid item xs={6} sm={4} md={4} lg={3}>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"
@@ -81,7 +84,7 @@ export default function ServicesCard() {
           </Card>
         </Grid>
 
-        <Grid item xs={6} sm={4} md={4} lg={3}>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"
@@ -99,7 +102,7 @@ export default function ServicesCard() {
           </Card>
         </Grid>
 
-        <Grid item xs={6} sm={4} md={4} lg={3}>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"

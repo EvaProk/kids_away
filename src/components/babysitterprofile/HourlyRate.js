@@ -14,43 +14,65 @@ export default function HourlyRate() {
     
      
     
-    <List sx={{ width: '100%', width: 150, bgcolor: 'background.paper' }}>
-   <Stack direction="row" > 
-          <ListItem>
+    <List sx={{ width: '80%',  bgcolor: 'background.paper' }} alignItems="center" justify="space-between">
+      <Grid container
+        direction="row"
+        
+        alignItems="center"
+        justify="space-between" >
+          
+
+        <Grid item xs={6} sm={6} md={3} lg={3}>
+          <ListItem >
             <ListItemAvatar>
               <Avatar>
                 <AttachMoneySharpIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="1Child" secondary="hello"/>
+            <ListItemText primary="1 Child" secondary="hello" />
           </ListItem>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <AttachMoneySharpIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="2Children" secondary="hello" />
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <AttachMoneySharpIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="3Children" secondary="hello"/>
-          </ListItem><ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <AttachMoneySharpIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="5Children" secondary="hello"/>
-          </ListItem>
-         </Stack>  
+        </Grid>
+
+        <Grid item xs={6} sm={6} md={3} lg={3}> 
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <AttachMoneySharpIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="2 Children" secondary="hello" />
+        </ListItem>
+      </Grid>
+
+      <Grid item xs={6} sm={6} md={3} lg={3}>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <AttachMoneySharpIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="3 Children" secondary="hello" />
+        </ListItem>
+      </Grid>
+
+      <Grid item xs={6} sm={6} md={3} lg={3}>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <AttachMoneySharpIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="5 Children" secondary="hello" />
+        </ListItem>
+      </Grid>
+
+      </Grid>
+
+
+
     </List>
 
-   
+
     // <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
     //   <ListItem>
     //     <ListItemAvatar>
