@@ -13,7 +13,7 @@ export default function ChooseAge() {
   };
 
   return (
-    <FormControl component="fieldset">
+    <FormControl component="fieldset" >
       <FormLabel component="legend"></FormLabel>
       <RadioGroup row
         aria-label="age"
