@@ -15,16 +15,6 @@ import ChooseAge from '../searchbabysitter/ChooseAge'
 import ChooseCity from '../searchbabysitter/ChooseCity'
 import CardItem from '../searchbabysitter/CardItem'
 
-
-
-
-
-
-
-
-
-
-
 export default function SearchBabysitter(props) {
 
   return (

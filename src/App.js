@@ -5,6 +5,7 @@ import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch,Route }  from "react-router-dom";
+import BabysitterCabinet from './components/babysittercabinet/babysitterCabinet';
 
 const theme = createTheme({
     palette: {
@@ -43,8 +44,9 @@ function App() {
           <Route path="/searchBabysitters">
             <SearchBabysitter/>
           </Route>
-          
-       
+          <Route path="/babysitterCabinet">
+            <BabysitterCabinet/>
+          </Route>
         </Switch>
           
       </ThemeProvider>
