@@ -35,6 +35,15 @@ export default function SearchBabysitter(props) {
       })
     },[setState.sitters])
 
+    const babysittersList = state.sitters.map((sitter) => 
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <CardItem 
+      image={sitter.photo}
+      name={sitter.first_name}
+      orders={sitter.orders.length}
+      /> 
+      </Grid>);
+
 
   return (
     <div className="searchPage">
@@ -57,29 +66,15 @@ export default function SearchBabysitter(props) {
       </div>
 
       <div className="babysitterList">
-        <Grid container >
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardItem />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardItem />
-          </Grid><Grid item sm={6} xs={12} md={4} lg={3}>
-            <CardItem />
-          </Grid><Grid item sm={6} xs={12} md={4} lg={3}>
-            <CardItem />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardItem />
-          </Grid>
+        <Grid container direction="row">
+            {babysittersList}
         </Grid>
 
 
-      <div className="BabysitterList">
-        {state.sitters.map(sitter =>  <div>{sitter.first_name}</div>)}
-
-
-      </div>
+    
+      
     </div>
     </div>
+   
   );
 };
