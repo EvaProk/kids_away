@@ -3,6 +3,7 @@ import FirstPage from './components/FirstPage'
 import Navbar from './components/Navbar'
 import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
 import BabysitterProfile from './components/babysitterprofile/BabysitterProfile'
+import UserCabinet from './components/usercabinet/UserCabinet'
 
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/babysitter-profile">
             <BabysitterProfile/>
+          </Route>
+          <Route path="/user-cabinet">
+            <UserCabinet/>
           </Route>
           
        
