@@ -17,11 +17,9 @@ export default function HourlyRate() {
     <List sx={{ width: '80%',  bgcolor: 'background.paper' }} alignItems="center" justify="space-between">
       <Grid container
         direction="row"
-        
         alignItems="center"
         justify="space-between" >
           
-
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <ListItem >
             <ListItemAvatar>
