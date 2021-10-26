@@ -20,11 +20,12 @@ import Grid from '@mui/material/Grid';
 
 
 export default function SearchBabysitter(props) {
-  console.log('I am here, Front');
+  const [city, setCity] = useState('');
   const [state, setState] = useState({
-  
     sitters: []
   });
+
+  const [filteredSitters, setFilteredSitters] = useState([])
 
   useEffect(()=>{
     return axios.get('/searchBabysitters')
@@ -32,10 +33,26 @@ export default function SearchBabysitter(props) {
         setState((prev)=>({
           ...prev, sitters: res.data
         }));
+        setFilteredSitters(res.data)
       })
     },[setState.sitters])
 
-    const babysittersList = state.sitters.map((sitter) => 
+
+
+    useEffect (()=>{
+      if(!city){
+        return
+      }
+      const result = state.sitters.filter((sitter)=>
+        sitter.city === city
+
+      )
+      setFilteredSitters(result)
+
+    },[city])
+
+    
+    const babysittersList = filteredSitters.map((sitter) => 
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <CardItem 
       image={sitter.photo}
@@ -43,6 +60,10 @@ export default function SearchBabysitter(props) {
       orders={sitter.orders.length}
       /> 
       </Grid>);
+
+      const handleCityCange = (city)=>{
+        setCity(city);
+      }
 
 
   return (
@@ -56,7 +77,7 @@ export default function SearchBabysitter(props) {
           <ChooseEndTime />
         </div>
         <h2 > Your City?</h2>
-        <ChooseCity />
+        <ChooseCity changeCity={handleCityCange}/>
         <h2 > Choose Childs Age</h2>
         <ChooseAge />
         <h2 > Prefered Language</h2>
@@ -70,9 +91,6 @@ export default function SearchBabysitter(props) {
             {babysittersList}
         </Grid>
 
-
-    
-      
     </div>
     </div>
    
