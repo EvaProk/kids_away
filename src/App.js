@@ -2,12 +2,16 @@ import './index.scss';
 import FirstPage from './components/FirstPage'
 import Navbar from './components/Navbar'
 import SearchBabysitter from './components/searchbabysitter/SearchBabysitter'
+
 import BabysitterProfile from './components/babysitterprofile/BabysitterProfile'
 import UserCabinet from './components/usercabinet/UserCabinet'
+
+import Favourites from './components/Favourites';
 
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch,Route }  from "react-router-dom";
+import BabysitterCabinet from './components/babysittercabinet/babysitterCabinet';
 
 const theme = createTheme({
     palette: {
@@ -46,15 +50,23 @@ function App() {
           </Route>
           <Route path="/searchBabysitters">
             <SearchBabysitter/>
+
           </Route>
           <Route path="/babysitter-profile">
             <BabysitterProfile/>
           </Route>
+
           <Route path="/user-cabinet">
             <UserCabinet/>
           </Route>
-          
+          <Route path="/babysitterCabinet">
+            <BabysitterCabinet/>
+          </Route>
        
+          <Route path="/favourites">
+            <Favourites/>
+          </Route>     
+
         </Switch>
           
       </ThemeProvider>
