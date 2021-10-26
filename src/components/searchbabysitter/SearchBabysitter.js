@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBabysitter.scss";
 import Button from '@mui/material/Button';
 // import { AccountCircleOutlined , FavoriteBorderOutlined , EmailOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
+import axios from "axios";
 
 import ChooseDate from '../searchbabysitter/ChooseDate'
 import ChooseStartTime from '../searchbabysitter/ChooseStartTime'
@@ -14,11 +15,29 @@ import ChooseActivity from '../searchbabysitter/ChooseActivity'
 import ChooseAge from '../searchbabysitter/ChooseAge'
 import ChooseCity from '../searchbabysitter/ChooseCity'
 import CardItem from '../searchbabysitter/CardItem'
+import Grid from '@mui/material/Grid';
+
+
 
 export default function SearchBabysitter(props) {
+  console.log('I am here, Front');
+  const [state, setState] = useState({
+  
+    sitters: []
+  });
+
+  useEffect(()=>{
+    return axios.get('/searchBabysitters')
+    .then((res)=>{
+        setState((prev)=>({
+          ...prev, sitters: res.data
+        }));
+      })
+    },[setState.sitters])
+
 
   return (
-    <div>
+    <div className="searchPage">
       <div className="search">
         <h2 > Choose Date</h2>
         <ChooseDate />
@@ -36,9 +55,31 @@ export default function SearchBabysitter(props) {
         <h2 > What are we doing today?</h2>
         <ChooseActivity />
       </div>
+
+      <div className="babysitterList">
+        <Grid container >
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <CardItem />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <CardItem />
+          </Grid><Grid item sm={6} xs={12} md={4} lg={3}>
+            <CardItem />
+          </Grid><Grid item sm={6} xs={12} md={4} lg={3}>
+            <CardItem />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <CardItem />
+          </Grid>
+        </Grid>
+
+
       <div className="BabysitterList">
+        {state.sitters.map(sitter =>  <div>{sitter.first_name}</div>)}
+
 
       </div>
+    </div>
     </div>
   );
 };
