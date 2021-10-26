@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBabysitter.scss";
 import Button from '@mui/material/Button';
 // import { AccountCircleOutlined , FavoriteBorderOutlined , EmailOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
+import axios from "axios";
 
 import ChooseDate from '../searchbabysitter/ChooseDate'
 import ChooseStartTime from '../searchbabysitter/ChooseStartTime'
@@ -16,16 +17,22 @@ import ChooseCity from '../searchbabysitter/ChooseCity'
 import CardItem from '../searchbabysitter/CardItem'
 
 
-
-
-
-
-
-
-
-
-
 export default function SearchBabysitter(props) {
+  console.log('I am here, Front');
+  const [state, setState] = useState({
+  
+    sitters: []
+  });
+
+  useEffect(()=>{
+    return axios.get('/searchBabysitters')
+    .then((res)=>{
+        setState((prev)=>({
+          ...prev, sitters: res.data
+        }));
+      })
+    },[setState.sitters])
+
 
   return (
     <div>
@@ -47,8 +54,10 @@ export default function SearchBabysitter(props) {
         <ChooseActivity />
       </div>
       <div className="BabysitterList">
+        {state.sitters.map(sitter =>  <div>{sitter.first_name}</div>)}
 
       </div>
+      
     </div>
   );
 };
