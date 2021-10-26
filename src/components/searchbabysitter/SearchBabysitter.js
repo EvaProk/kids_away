@@ -79,7 +79,7 @@ export default function SearchBabysitter(props) {
 
 
       </div>
-      
+    </div>
     </div>
   );
 };
