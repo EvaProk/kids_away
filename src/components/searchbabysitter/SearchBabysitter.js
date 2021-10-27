@@ -119,12 +119,23 @@ export default function SearchBabysitter(props) {
         }            
       });
     }
-    if (date) {  
-      console.log("inside date");    
+    // if (date) {  
+    //   console.log("inside date");    
+    //   const finalDate= formatDate(date);
+    //   res = res.filter((sitter) => {
+    //     for (const avail of sitter.availability) {
+    //       console.log("equal",avail.date === finalDate);
+    //     return avail.date === finalDate
+    //     }
+    //   });
+    // }
+    if (date) {
+      console.log("date:",date);
+      console.log("inside date", res);
       const finalDate= formatDate(date);
       res = res.filter((sitter) => {
         for (const avail of sitter.availability) {
-          console.log("equal",avail.date === finalDate);
+          console.log(avail.date, "“equal”",avail.date === finalDate);
         return avail.date === finalDate
         }
       });
@@ -148,7 +159,9 @@ export default function SearchBabysitter(props) {
     <div className="searchPage">
       <div className="search">
         <h2 > Choose Date</h2>
-        <ChooseDate changeDate={handleDateChange}/>
+        <ChooseDate 
+        value={date}
+        changeDate={handleDateChange}/>
         <h2 > What time do you prefer?</h2>
         <div className="time">
           <ChooseStartTime changeStartTime={handleStartTimeChange} />

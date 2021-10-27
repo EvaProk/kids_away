@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 
 export default function ServicesCard() {
   return (
-    <div> 
+    
       <Grid container 
       direction="row"
       alignItems="center"
@@ -122,6 +122,6 @@ export default function ServicesCard() {
 
 
       </Grid>
-  </div>
+
   );
 }
