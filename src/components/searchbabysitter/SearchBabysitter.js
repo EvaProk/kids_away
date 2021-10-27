@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
+import formatDate from '../helpers/formatter';
 
 import ChooseDate from "../searchbabysitter/ChooseDate";
 import ChooseStartTime from "../searchbabysitter/ChooseStartTime";
@@ -20,6 +21,7 @@ import Grid from "@mui/material/Grid";
 export default function SearchBabysitter(props) {
   const [city, setCity] = useState("");
   const [startTime, setStartTime] = useState("");
+  const [date, setDate] = useState('');
 
   const [filteredSitters, setFilteredSitters] = useState([]);
 
@@ -96,22 +98,42 @@ export default function SearchBabysitter(props) {
   const handleStartTimeChange = (startTime) => {
     setStartTime(startTime);
   };
+  const handleDateChange = (date)=>{
+      console.log("date----->", date)
+      setDate(date);
+  };
+
   useEffect(()=>{
     let res=filteredSitters;
     if(city) {
       console.log('inside city');
       res= res.filter((sitter) => sitter.city === city)
+      console.log("res after city", res);
     }
     if (startTime) {
-      console.log("inside time");
+      console.log("inside time", res);
       res= res.filter((sitter) => {
         for (const avail of sitter.availability) {
           return avail.start_time === startTime;
         }            
-    });
+      });
+      console.log("res after time", res);
+    }
+    if (date) {  
+      console.log("inside date");    
+      const finalDate= formatDate(date);
+      console.log("fin", typeof finalDate, res);
+      res = res.filter((sitter) => {
+        for (const avail of sitter.availability) {
+          console.log("equal",avail.date === finalDate);
+          console.log("fiavail.daten", avail.date);
+        return avail.date.toString === finalDate
+        }
+      });
+      console.log("res after date", res);
     }
     setFilteredSitters(res)
-  }, [city, startTime])
+  }, [city, startTime, date])
 
   const babysittersList = filteredSitters.map((sitter) => (
     <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -123,130 +145,7 @@ export default function SearchBabysitter(props) {
       />
     </Grid>
   ));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+ 
 
   return (
     <div className="searchPage">
