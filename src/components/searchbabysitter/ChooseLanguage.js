@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-export default function ChooseLanguage() {
+export default function ChooseLanguage(props) {
   // const [language, setLanguage] = useState('');
 
   // const handleChange = (event) => {
@@ -22,13 +22,15 @@ export default function ChooseLanguage() {
           id="demo-simple-select"
           // value={age}
           label="Language"
-          // onChange={handleChange}
+          onChange={(event)=>{props.changeLanguage(event.target.value)}}
         >
           <MenuItem value={'English'}>English</MenuItem>
           <MenuItem value={'Mandarin'}>Mandarin </MenuItem>
           <MenuItem value={'Farsi'}>Farsi</MenuItem>
           <MenuItem value={'Russian'}>Russian</MenuItem>
           <MenuItem value={'French'}>French</MenuItem>
+          <MenuItem value={'Spanish'}>Spanish</MenuItem>
+          <MenuItem value={'Punjabi'}>Punjabi</MenuItem>
 
         </Select>
       </FormControl>
