@@ -5,13 +5,13 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
-export default function ChooseCity() {
-  const [city, setCity] = useState('');
+export default function ChooseCity(props) {
+  //const [city, setCity] = useState('');
   const [open, setOpen] = useState(false);
 
-  const handleChange = (event) => {
-    setCity(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setCity(event.target.value);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -31,9 +31,9 @@ export default function ChooseCity() {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={city}
+          //value={city}
           label="Age"
-          onChange={handleChange}
+          onChange={(event)=> props.changeCity(event.target.value)}
         >
           <MenuItem value="">
             <em>None</em>
