@@ -24,10 +24,11 @@ export default function SearchBabysitter(props) {
   const [date, setDate] = useState('');
 
   const [filteredSitters, setFilteredSitters] = useState([]);
-
+  const [allSitters, setAllSitters] = useState([]);
   useEffect(() => {
     return axios.get("/searchBabysitters").then((res) => {
             setFilteredSitters(res.data);
+            setAllSitters(res.data)
     });
   }, []);
 
@@ -104,11 +105,11 @@ export default function SearchBabysitter(props) {
   };
 
   useEffect(()=>{
-    let res=filteredSitters;
+    
+    let res=allSitters;
     if(city) {
       console.log('inside city');
       res= res.filter((sitter) => sitter.city === city)
-      console.log("res after city", res);
     }
     if (startTime) {
       console.log("inside time", res);
@@ -117,20 +118,16 @@ export default function SearchBabysitter(props) {
           return avail.start_time === startTime;
         }            
       });
-      console.log("res after time", res);
     }
     if (date) {  
       console.log("inside date");    
       const finalDate= formatDate(date);
-      console.log("fin", typeof finalDate, res);
       res = res.filter((sitter) => {
         for (const avail of sitter.availability) {
           console.log("equal",avail.date === finalDate);
-          console.log("fiavail.daten", avail.date);
-        return avail.date.toString === finalDate
+        return avail.date === finalDate
         }
       });
-      console.log("res after date", res);
     }
     setFilteredSitters(res)
   }, [city, startTime, date])
