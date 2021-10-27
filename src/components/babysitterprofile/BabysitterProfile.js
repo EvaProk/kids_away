@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import "./BabysitterProfile.scss";
 import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
@@ -8,21 +8,28 @@ import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import ReviewItem from '../babysitterprofile/ReviewItem'
 import DialogWindow from '../babysitterprofile/DialogWindow'
+import axios from "axios";
+
 
 import { useParams } from "react-router-dom";
 
 
-
-
-
-
-
-
-
-
-
 export default function BabysitterProfile(props) {
   const { id } = useParams();
+
+  const [state, setState] = useState({
+    profile: []
+  });
+
+  useEffect(()=>{
+    return axios.get(`/babysitter-profile/${id}`)
+    .then((res)=>{
+        setState((prev)=>({
+          ...prev, profile: res.data
+        }));
+      })
+    },[])
+    console.log(state.profile)
 
 
   return (
