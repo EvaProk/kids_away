@@ -9,6 +9,9 @@ import Grid from '@mui/material/Grid';
 import ReviewItem from '../babysitterprofile/ReviewItem'
 import DialogWindow from '../babysitterprofile/DialogWindow'
 
+import { useParams } from "react-router-dom";
+
+
 
 
 
@@ -19,6 +22,8 @@ import DialogWindow from '../babysitterprofile/DialogWindow'
 
 
 export default function BabysitterProfile(props) {
+  const { id } = useParams();
+
 
   return (
     <div className="profile">

@@ -52,7 +52,7 @@ function App() {
             <SearchBabysitter/>
 
           </Route>
-          <Route path="/babysitter-profile">
+          <Route path="/babysitter-profile/:id">
             <BabysitterProfile/>
           </Route>
 

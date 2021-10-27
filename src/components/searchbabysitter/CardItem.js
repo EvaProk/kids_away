@@ -7,8 +7,6 @@ import Grid from '@mui/material/Grid';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
 import { Link } from 'react-router-dom';
-
-
 import { CardActionArea,} from '@mui/material';
 import {StarOutline , AccessTime, PersonOutline, FavoriteBorder}   from '@mui/icons-material';
 
@@ -29,7 +27,8 @@ export default function CardItem(props) {
         }
         subheader={props.name}
       />
-      <CardActionArea component={Link} to="/babysitter-profile">
+      <CardActionArea component={Link} to={`/babysitter-profile/${props.id}`}>
+      {/* "/babysitter-profile/{}" */}
         <CardMedia
           component="img"
           height="200"
