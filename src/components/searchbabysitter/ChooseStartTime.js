@@ -8,12 +8,12 @@ import Select from '@mui/material/Select';
 
 
 
-export default function ChooseStartTime() {
-  const [startTime, setStartTime] = useState('');
+export default function ChooseStartTime(props) {
+  // const [startTime, setStartTime] = useState('');
 
-  const handleChange = (event) => {
-    setStartTime(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setStartTime(event.target.value);
+  // };
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -21,34 +21,34 @@ export default function ChooseStartTime() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={startTime}
+          //value={startTime}
           label="Start Time"
-          onChange={handleChange}
+          onChange={(event)=> props.changeStartTime(event.target.value)}
         >
-          <MenuItem value={"12am"}>12am</MenuItem>
-          <MenuItem value={"1am"}>1am</MenuItem>
-          <MenuItem value={"2am"}>2am</MenuItem>
-          <MenuItem value={"3am"}>3am</MenuItem>
-          <MenuItem value={"4am"}>4am</MenuItem>
-          <MenuItem value={"5am"}>5am</MenuItem>
-          <MenuItem value={"6am"}>6am</MenuItem>
-          <MenuItem value={"7am"}>7am</MenuItem>
-          <MenuItem value={"8am"}>8am</MenuItem>
-          <MenuItem value={"9am"}>9am</MenuItem>
-          <MenuItem value={"10am"}>10am</MenuItem>
-          <MenuItem value={"11am"}>11am</MenuItem>
-          <MenuItem value={"12pm"}>12pm</MenuItem>
-          <MenuItem value={"1pm"}>1pm</MenuItem>
-          <MenuItem value={"2pm"}>2pm</MenuItem>
-          <MenuItem value={"3pm"}>3pm</MenuItem>
-          <MenuItem value={"4pm"}>4pm</MenuItem>
-          <MenuItem value={"5pm"}>5pm</MenuItem>
-          <MenuItem value={"6pm"}>6pm</MenuItem>
-          <MenuItem value={"7pm"}>7pm</MenuItem>
-          <MenuItem value={"8pm"}>8pm</MenuItem>
-          <MenuItem value={"9pm"}>9pm</MenuItem>
-          <MenuItem value={"10pm"}>10pm</MenuItem>
-          <MenuItem value={"11pm"}>11pm</MenuItem>
+          <MenuItem value={"00:00:00"}>12am</MenuItem>
+          <MenuItem value={"01:00:00"}>1am</MenuItem>
+          <MenuItem value={"02:00:00"}>2am</MenuItem>
+          <MenuItem value={"03:00:00"}>3am</MenuItem>
+          <MenuItem value={"04:00:00"}>4am</MenuItem>
+          <MenuItem value={"05:00:00"}>5am</MenuItem>
+          <MenuItem value={"06:00:00"}>6am</MenuItem>
+          <MenuItem value={"07:00:00"}>7am</MenuItem>
+          <MenuItem value={"08:00:00"}>8am</MenuItem>
+          <MenuItem value={"09:00:00"}>9am</MenuItem>
+          <MenuItem value={"10:00:00"}>10am</MenuItem>
+          <MenuItem value={"11:00:00"}>11am</MenuItem>
+          <MenuItem value={"12:00:00"}>12pm</MenuItem>
+          <MenuItem value={"13:00:00"}>1pm</MenuItem>
+          <MenuItem value={"14:00:00"}>2pm</MenuItem>
+          <MenuItem value={"15:00:00"}>3pm</MenuItem>
+          <MenuItem value={"16:00:00"}>4pm</MenuItem>
+          <MenuItem value={"17:00:00"}>5pm</MenuItem>
+          <MenuItem value={"18:00:00"}>6pm</MenuItem>
+          <MenuItem value={"19:00:00"}>7pm</MenuItem>
+          <MenuItem value={"20:00:00"}>8pm</MenuItem>
+          <MenuItem value={"21:00:00"}>9pm</MenuItem>
+          <MenuItem value={"22:00:00"}>10pm</MenuItem>
+          <MenuItem value={"23:00:00"}>11pm</MenuItem>
         </Select>
       </FormControl>
       

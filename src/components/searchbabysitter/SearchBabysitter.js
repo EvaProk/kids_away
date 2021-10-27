@@ -21,6 +21,7 @@ import Grid from '@mui/material/Grid';
 
 export default function SearchBabysitter(props) {
   const [city, setCity] = useState('');
+  const [startTime, setStartTime] = useState('');
   const [state, setState] = useState({
     sitters: []
   });
@@ -35,21 +36,37 @@ export default function SearchBabysitter(props) {
         }));
         setFilteredSitters(res.data)
       })
-    },[setState.sitters])
-
-
+    },[]);
 
     useEffect (()=>{
       if(!city){
         return
       }
-      const result = state.sitters.filter((sitter)=>
+      const result = filteredSitters.filter((sitter)=>
         sitter.city === city
-
       )
+      console.log(result);
       setFilteredSitters(result)
 
-    },[city])
+    },[city]);
+
+    useEffect (()=>{
+      if(!startTime){
+        return
+      }
+      console.log("knvkwne", startTime);
+      const result = filteredSitters.filter((sitter) => {
+        for (const avail of sitter.availability) {
+          console.log(avail);
+          return avail.start_time === startTime
+        }
+      }
+  
+      )
+      console.log("k",result);
+      setFilteredSitters(result)
+
+    },[startTime]);
 
     
     const babysittersList = filteredSitters.map((sitter) => 
@@ -64,6 +81,9 @@ export default function SearchBabysitter(props) {
       const handleCityCange = (city)=>{
         setCity(city);
       }
+      const handleStartTimeChange = (startTime)=>{
+        setStartTime(startTime);
+      }
 
 
   return (
@@ -73,7 +93,7 @@ export default function SearchBabysitter(props) {
         <ChooseDate />
         <h2 > What time do you prefer?</h2>
         <div className="time">
-          <ChooseStartTime />
+          <ChooseStartTime changeStartTime={handleStartTimeChange}/>
           <ChooseEndTime />
         </div>
         <h2 > Your City?</h2>

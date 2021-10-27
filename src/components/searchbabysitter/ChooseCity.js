@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
 export default function ChooseCity(props) {
-  // const [city, setCity] = useState('');
+  //const [city, setCity] = useState('');
   const [open, setOpen] = useState(false);
 
   // const handleChange = (event) => {
@@ -31,9 +31,9 @@ export default function ChooseCity(props) {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          // value={city}
+          //value={city}
           label="Age"
-          onChange={(value)=> props.changeCity(value)}
+          onChange={(event)=> props.changeCity(event.target.value)}
         >
           <MenuItem value="">
             <em>None</em>
