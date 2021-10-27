@@ -21,6 +21,7 @@ import Grid from "@mui/material/Grid";
 export default function SearchBabysitter(props) {
   const [city, setCity] = useState("");
   const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState('');
 
   const [filteredSitters, setFilteredSitters] = useState([]);
@@ -100,9 +101,11 @@ export default function SearchBabysitter(props) {
     setStartTime(startTime);
   };
   const handleDateChange = (date)=>{
-      console.log("date----->", date)
       setDate(date);
   };
+  const handleEndTimeChange = (endTime)=>{
+    setEndTime(endTime);
+};
 
   useEffect(()=>{
     
@@ -115,7 +118,20 @@ export default function SearchBabysitter(props) {
       console.log("inside time", res);
       res= res.filter((sitter) => {
         for (const avail of sitter.availability) {
+          console.log("sitter", sitter, "avail.t:",avail.start_time, "“equal”",avail.start_time === startTime);
+         if (avail.start_time === startTime)
           return avail.start_time === startTime;
+        }            
+      });
+    }
+    if (endTime) {
+      console.log("inside Endtime", res);
+      res= res.filter((sitter) => {
+        for (const avail of sitter.availability) {
+          console.log('END', endTime);
+          console.log("sitter", sitter, "avail.tEnd:",avail.end_time, "“equal”",avail.end_time === endTime);
+         if (avail.end_time === endTime)
+          return avail.end_time === endTime;
         }            
       });
     }
@@ -135,13 +151,14 @@ export default function SearchBabysitter(props) {
       const finalDate= formatDate(date);
       res = res.filter((sitter) => {
         for (const avail of sitter.availability) {
-          console.log(avail.date, "“equal”",avail.date === finalDate);
+          console.log("sitter", sitter, "avail.date:",avail.date, "“equal”",avail.date === finalDate);
+          if (avail.date === finalDate)
         return avail.date === finalDate
         }
       });
     }
     setFilteredSitters(res)
-  }, [city, startTime, date])
+  }, [city, startTime, date, endTime])
 
   const babysittersList = filteredSitters.map((sitter) => (
     <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -165,7 +182,7 @@ export default function SearchBabysitter(props) {
         <h2 > What time do you prefer?</h2>
         <div className="time">
           <ChooseStartTime changeStartTime={handleStartTimeChange} />
-          <ChooseEndTime />
+          <ChooseEndTime changeEndTime={handleEndTimeChange}/>
         </div>
         <h2> Your City?</h2>
         <ChooseCity changeCity={handleCityCange} />
