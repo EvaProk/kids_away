@@ -23,6 +23,7 @@ export default function SearchBabysitter(props) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState('');
+  const [age, setAge] = useState('');
 
   const [filteredSitters, setFilteredSitters] = useState([]);
   const [allSitters, setAllSitters] = useState([]);
@@ -106,6 +107,9 @@ export default function SearchBabysitter(props) {
   const handleEndTimeChange = (endTime)=>{
     setEndTime(endTime);
 };
+const handleAgeChange = (age)=>{
+  setAge(age);
+};
 
   useEffect(()=>{
     
@@ -157,8 +161,21 @@ export default function SearchBabysitter(props) {
         }
       });
     }
+
+    if (age) {
+      console.log("age:",age);
+      console.log("inside age", res);
+      res = res.filter((sitter) => {
+        for (const age_g of sitter.age_group) {
+          console.log("sitter", sitter, "avail.date:",age_g, "“equal”",age_g === age);
+          if (age_g === age)
+        return age_g === age
+        }
+      });
+    }
+
     setFilteredSitters(res)
-  }, [city, startTime, date, endTime])
+  }, [city, startTime, date, endTime, age])
 
   const babysittersList = filteredSitters.map((sitter) => (
     <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -187,7 +204,7 @@ export default function SearchBabysitter(props) {
         <h2> Your City?</h2>
         <ChooseCity changeCity={handleCityCange} />
         <h2> Choose Childs Age</h2>
-        <ChooseAge />
+        <ChooseAge changeAge={handleAgeChange}/>
         <h2> Prefered Language</h2>
         <ChooseLanguage />
         <h2> What are we doing today?</h2>
