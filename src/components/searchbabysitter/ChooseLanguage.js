@@ -22,7 +22,7 @@ export default function ChooseLanguage() {
           id="demo-simple-select"
           // value={age}
           label="Language"
-          onChange={handleChange}
+          // onChange={handleChange}
         >
           <MenuItem value={'English'}>English</MenuItem>
           <MenuItem value={'Mandarin'}>Mandarin </MenuItem>
