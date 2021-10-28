@@ -161,6 +161,8 @@ function BabysitterCabinet() {
         recurrenceRuleExpr="recurrence"
         //timeZone="America/Vancouver"
         adaptivityEnabled={true}
+        startDayHour = '10'
+        endDayHour = '23'
       >
         <Editing allowDragging={false} allowTimeZoneEditing={false} />
       </Scheduler>
