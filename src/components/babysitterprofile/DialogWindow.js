@@ -14,6 +14,8 @@ import ChooseEndTime from "../searchbabysitter/ChooseEndTime";
 import ChooseLanguage from "../searchbabysitter/ChooseLanguage";
 import ChooseActivity from "../searchbabysitter/ChooseActivity";
 import ChooseAge from "../searchbabysitter/ChooseAge";
+import ChooseChildren from "../searchbabysitter/ChooseChildren";
+
 import ChooseCity from "../searchbabysitter/ChooseCity";
 import Stack from "@mui/material/Stack";
 import formatDate from "../helpers/formatter";
@@ -25,22 +27,34 @@ export default function DialogWindow() {
   const [address, setAddress] = useState("");
   const [activity, setActivity] = useState("");
   const [message, setMessage] = useState("");
+  const [number, setNumber] = useState("");
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const order = {
       address,
       activity,
       message,
+      number,
       age: localStorage.getItem("age"),
       date: formatDate(localStorage.getItem("date")),
       startTime: localStorage.getItem("startTime"),
       endTime: localStorage.getItem("endTime"),
       language: localStorage.getItem("language"), 
     };
-    return axios.post('/orders', order)
-      .then(response => console.log(response.status));
-  };
+
+    // return axios.post('http://localhost:8001/orders', order)
+    //   .then(response => {
+    //     if(response.status === 200){
+    //      // <Popupwindow/>
+    //     }
+    //   })
+    //   .then(()=> 
+    //   // link to cabinet)
+       
+      };
 
   
 
@@ -73,6 +87,10 @@ export default function DialogWindow() {
           />
 
           <ChooseLanguage value={localStorage.getItem("language")} />
+
+          <ChooseChildren
+          value={number}
+          onChange={(event) => setNumber(event.target.value)}/>
 
           <ChooseActivity
           value={activity}
