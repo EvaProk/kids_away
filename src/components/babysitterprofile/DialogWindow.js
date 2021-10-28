@@ -19,9 +19,12 @@ import Stack from "@mui/material/Stack";
 import formatDate from "../helpers/formatter";
 import axios from "axios";
 
+import { useParams } from "react-router-dom";
+
 
 
 export default function DialogWindow() {
+  const { id } = useParams();
   const [address, setAddress] = useState("");
   const [activity, setActivity] = useState("");
   const [message, setMessage] = useState("");
@@ -29,6 +32,7 @@ export default function DialogWindow() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const order = {
+      sitter_id: id,
       address,
       activity,
       message,
@@ -38,8 +42,10 @@ export default function DialogWindow() {
       endTime: localStorage.getItem("endTime"),
       language: localStorage.getItem("language"), 
     };
-    return axios.post('/orders', order)
-      .then(response => console.log(response.status));
+    console.log("order", order);
+    return axios.post('/neworder', null, {params: { order }})
+      .then(response => console.log("------>",response.status))
+      .catch((er)=>{console.log("errr", er)});
   };
 
   
