@@ -57,7 +57,7 @@ export default function DialogWindow() {
        
         <ChooseCity />
        
-        <ChooseAge />
+        <ChooseAge value={localStorage.getItem('age')}/>
        
         <ChooseLanguage value={localStorage.getItem('language')}/>
         
