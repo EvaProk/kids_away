@@ -24,7 +24,7 @@ const theme = createTheme({
         contrastText: "#f7f1e5;"
       },
       accent: {
-        main: '#444',
+        main: '#A9A9A9',
         contrastText: "#f7f1e5;"
       },
     

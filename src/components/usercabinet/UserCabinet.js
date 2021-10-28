@@ -4,6 +4,8 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import OrderDetails from "../confirmorder/OrderDetails";
+
 
 export default function UserCabinet() {
   const [value, setValue] = useState('1');
@@ -22,7 +24,9 @@ export default function UserCabinet() {
             <Tab label="Favourite Orders" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1">Item One</TabPanel>
+        <TabPanel value="1">
+          <OrderDetails/>
+        </TabPanel>
         <TabPanel value="2">Item Two</TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
       </TabContext>
