@@ -6,11 +6,15 @@ import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import 'devextreme/dist/css/dx.light.css';
-import './babysitterCabinet.css';
-import { Scheduler, Editing } from 'devextreme-react/scheduler';
-import { appointments } from './data.js';
-import React, { useCallback, useState } from 'react';
+import "devextreme/dist/css/dx.light.css";
+import "./babysitterCabinet.css";
+import { Scheduler, Editing } from "devextreme-react/scheduler";
+import { appointments } from "./data.js";
+import React, { useCallback, useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
+import formatDate from "../helpers/formatter";
 
 /*
 const locales = {
@@ -93,29 +97,75 @@ export default function BabysitterCabinet() {
 */
 
 function BabysitterCabinet() {
-  const [currentDate, setCurrentDate] = useState(new Date(2021, 4, 25));
-    const handlePropertyChange = useCallback((e) => {
-        if(e.name === 'currentDate') {
-            setCurrentDate(e.value);
+  const [currentDate, setCurrentDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
+  const [schedule, setSchedule] = useState([]);
+  const [loaded, setLoaded] = useState(true);
+  console.log("curre", currentDate);
+
+  useEffect(() => {
+    return axios.get("/babysitterCabinet").then((res) => {
+      setSchedule(res.data);
+      setLoaded(false);
+      console.log("resdata", res.data);
+    });
+  }, []);
+  if (loaded) {
+    return <div></div>;
+  } else {
+    // const handlePropertyChange = useCallback((e) => {
+    //   if (e.name === "currentDate") {
+    //     setCurrentDate(e.value);
+    //   }
+    // }, []);
+
+    const dataAdjast = (data) => {
+      const arr = [];
+      for (const day of data) {
+        function tConvert (time) {
+          // Check correct time format and split into components
+          time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+        
+          if (time.length > 1) { // If time format correct
+            time = time.slice (1);  // Remove full string match value
+            time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+          }
+          return time.join (''); // return adjusted time or original string
         }
-    }, [])
- 
+        const am_pm = tConvert(day.start_time);
+        const am_pm_end = tConvert(day.end_time);
+        console.log(day.date.slice(0,11)+0+am_pm.slice(0,-2)+day.date.slice(-5));
+        
+
+        arr.push(
+          {
+            title: `${day.booked}`,
+            startDate:day.date.slice(0,11)+0+am_pm.slice(0,-2)+day.date.slice(-5),
+            endDate:day.date.slice(0,11)+0+am_pm_end.slice(0,-2)+day.date.slice(-5),
+          }
+        )
+
+      }
+      return arr;
+    }
+
     return (
-        <Scheduler 
-          currentDate={currentDate}
-          onOptionChanged={handlePropertyChange}
-          dataSource={appointments}
-          textExpr="title"
-          allDayExpr="dayLong"
-          recurrenceRuleExpr="recurrence"
-          timeZone="America/Vancouver"
-          adaptivityEnabled={true}>
-            <Editing
-                allowDragging={false}
-                allowTimeZoneEditing={true}
-            />
-        </Scheduler>
+      <Scheduler
+        currentDate={currentDate}
+        // onOptionChanged={handlePropertyChange}
+        dataSource={dataAdjast(schedule)}
+        textExpr="title"
+        //allDayExpr="dayLong"
+        recurrenceRuleExpr="recurrence"
+        //timeZone="America/Vancouver"
+        adaptivityEnabled={true}
+      >
+        <Editing allowDragging={false} allowTimeZoneEditing={false} />
+      </Scheduler>
     );
+  }
 }
 
 export default BabysitterCabinet;
