@@ -9,7 +9,8 @@ import AttachMoneySharpIcon from '@mui/icons-material/AttachMoneySharp';
 import Stack from '@mui/material/Stack';
 
 
-export default function HourlyRate() {
+export default function HourlyRate(props) {
+  console.log("H", props);
   return (
     
      
@@ -27,7 +28,7 @@ export default function HourlyRate() {
                 <AttachMoneySharpIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="1 Child" secondary="hello" />
+            <ListItemText primary={props.prices[0].onekid_onehour} secondary="1 child/hour" />
           </ListItem>
         </Grid>
 
@@ -38,7 +39,7 @@ export default function HourlyRate() {
               <AttachMoneySharpIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="2 Children" secondary="hello" />
+          <ListItemText primary={props.prices[0].twokids_onehour} secondary="2 childs/hour" />
         </ListItem>
       </Grid>
 
@@ -49,20 +50,10 @@ export default function HourlyRate() {
               <AttachMoneySharpIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="3 Children" secondary="hello" />
+          <ListItemText primary={props.prices[0].threekids_onehour} secondary="3 childs/hour" />
         </ListItem>
       </Grid>
-
-      <Grid item xs={6} sm={6} md={3} lg={3}>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <AttachMoneySharpIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="5 Children" secondary="hello" />
-        </ListItem>
-      </Grid>
+ 
 
       </Grid>
 
