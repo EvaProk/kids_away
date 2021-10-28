@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
 
-export default function ReviewItem() {
+export default function ReviewItem(props) {
   
 
   return (
@@ -27,103 +27,20 @@ export default function ReviewItem() {
             color="accent"
             fontWeight="500"
           >
-            Nora
+            {props.name}
           </Typography>
-          <Rating name="read-only" value="3" readOnly />
+          <Rating name="read-only" value={props.rating} readOnly />
           <Typography
             sx={{ display: 'inline' }}
             component="span"
             variant="h7"
             color="accent"
           >
-            I'll be in your neighborhood doing errands this…I'll be in your neighborhood doing errands thisI'll be in your neighborhoo"
+            {props.comment}
           </Typography>
         </Stack>
       </ListItem>
       <Divider variant="inset" component="li" />
-
-
-      <ListItem alignItems="space-between" spacing={4} >
-        <ListItemAvatar>
-          <Avatar style={{ height: '5rem', width: '5rem', margin: "5px" }} alt="Remy Sharp" src="/images/face.jpeg" />
-        </ListItemAvatar>
-        <Stack direction="column" spacing={1}>
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h5"
-            color="accent"
-            fontWeight="500"
-          >
-            Nora
-          </Typography>
-          <Rating name="read-only" value="3" readOnly />
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h7"
-            color="accent"
-          >
-            I'll be in your neighborhood doing errands this…I'll be in your neighborhood doing errands thisI'll be in your neighborhoo"
-          </Typography>
-        </Stack>
-      </ListItem>
-      <Divider variant="inset" component="li" /><ListItem alignItems="space-between" spacing={4} >
-        <ListItemAvatar>
-          <Avatar style={{ height: '5rem', width: '5rem', margin: "5px" }} alt="Remy Sharp" src="/images/face.jpeg" />
-        </ListItemAvatar>
-        <Stack direction="column" spacing={1}>
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h5"
-            color="accent"
-            fontWeight="500"
-          >
-            Nora
-          </Typography>
-          <Rating name="read-only" value="3" readOnly />
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h7"
-            color="accent"
-          >
-            I'll be in your neighborhood doing errands this…I'll be in your neighborhood doing errands thisI'll be in your neighborhoo"
-          </Typography>
-        </Stack>
-      </ListItem>
-      <Divider variant="inset" component="li" /><ListItem alignItems="space-between" spacing={4} >
-        <ListItemAvatar>
-          <Avatar style={{ height: '5rem', width: '5rem', margin: "5px" }} alt="Remy Sharp" src="/images/face.jpeg" />
-        </ListItemAvatar>
-        <Stack direction="column" spacing={1}>
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h5"
-            color="accent"
-            fontWeight="500"
-          >
-            Nora
-          </Typography>
-          <Rating name="read-only" value="3" readOnly />
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h7"
-            color="accent"
-          >
-            I'll be in your neighborhood doing errands this…I'll be in your neighborhood doing errands thisI'll be in your neighborhoo"
-          </Typography>
-        </Stack>
-      </ListItem>
-      <Divider variant="inset" component="li" />
-
-
-
-
-
     </List>
   );
 }
