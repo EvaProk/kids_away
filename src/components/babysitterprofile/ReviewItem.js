@@ -10,6 +10,7 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
 
+
 export default function ReviewItem(props) {
   
 
@@ -23,21 +24,16 @@ export default function ReviewItem(props) {
           <Typography
             sx={{ display: 'inline' }}
             component="span"
-            variant="h5"
-            color="accent"
-            fontWeight="500"
+            variant="h7"
+            color="primary"
+            fontWeight="600"
           >
             {props.name}
           </Typography>
-          <Rating name="read-only" value={props.rating} readOnly />
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="h7"
-            color="accent"
-          >
-            {props.comment}
-          </Typography>
+          <Rating name="read-only" size="small" value={props.rating} readOnly />
+           <ListItemText secondary={ props.comment} style={{ fontSize:'3em'}}  />
+
+
         </Stack>
       </ListItem>
       <Divider variant="inset" component="li" />

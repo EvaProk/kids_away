@@ -9,9 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 export default function AlertDialog() {
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -19,9 +19,9 @@ export default function AlertDialog() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open alert dialog
-      </Button>
+      </Button> */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -33,14 +33,12 @@ export default function AlertDialog() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+            Thank You! Your order has been sent. Babysitter will confirm it shortly. Have a great dayQ
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
+          <Button color="primary" variant="contained" onClick={handleClose} autoFocus>
+            Close
           </Button>
         </DialogActions>
       </Dialog>

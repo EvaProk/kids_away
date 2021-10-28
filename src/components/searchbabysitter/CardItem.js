@@ -32,7 +32,6 @@ export default function CardItem(props) {
         subheader={props.name}
       />
       <CardActionArea component={Link} to={`/babysitter-profile/${props.id}`}>
-        {/* "/babysitter-profile/{}" */}
         <CardMedia
           component="img"
           height="200"

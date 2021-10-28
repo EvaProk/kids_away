@@ -28,7 +28,7 @@ export default function HourlyRate(props) {
                 <AttachMoneySharpIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={props.prices[0].onekid_onehour} secondary="1 child/hour" />
+            <ListItemText primary={props.prices[0].onekid_onehour} secondary="1 kid/hr" />
           </ListItem>
         </Grid>
 
@@ -39,7 +39,7 @@ export default function HourlyRate(props) {
               <AttachMoneySharpIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary={props.prices[0].twokids_onehour} secondary="2 childs/hour" />
+          <ListItemText primary={props.prices[0].twokids_onehour} secondary="2 kids/hr" />
         </ListItem>
       </Grid>
 
@@ -50,7 +50,7 @@ export default function HourlyRate(props) {
               <AttachMoneySharpIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary={props.prices[0].threekids_onehour} secondary="3 childs/hour" />
+          <ListItemText primary={props.prices[0].threekids_onehour} secondary="3 kids/hr" />
         </ListItem>
       </Grid>
  

@@ -15,8 +15,6 @@ import ChooseLanguage from "../searchbabysitter/ChooseLanguage";
 import ChooseActivity from "../searchbabysitter/ChooseActivity";
 import ChooseAge from "../searchbabysitter/ChooseAge";
 import ChooseChildren from "../searchbabysitter/ChooseChildren";
-
-import ChooseCity from "../searchbabysitter/ChooseCity";
 import Stack from "@mui/material/Stack";
 import formatDate from "../helpers/formatter";
 import axios from "axios";
@@ -25,9 +23,17 @@ import { useParams } from "react-router-dom";
 
 
 
+import ConfirmWindow from "../confirmorder/ConfirmWindow"
+import UserCabinet from "../usercabinet/UserCabinet"
+
+
+
+
 export default function DialogWindow() {
   const { id } = useParams();
   const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+
   const [activity, setActivity] = useState("");
   const [message, setMessage] = useState("");
   const [number, setNumber] = useState("");
@@ -42,6 +48,7 @@ export default function DialogWindow() {
       activity,
       message,
       number,
+      phone,
       age: localStorage.getItem("age"),
       date: formatDate(localStorage.getItem("date")),
       startTime: localStorage.getItem("startTime"),
@@ -50,15 +57,16 @@ export default function DialogWindow() {
     };
 
     console.log("order", order);
+
     return axios.post('/neworder', null, {params: { order }})
      .then(response => {
      if(response.status === 200){
-        // <Popupwindow/>
+       <ConfirmWindow/>
        }
      })
       .then(()=> 
-     // link to cabinet)
-  };
+     <UserCabinet/>)
+      };
   
 
   const [open, setOpen] = useState(false);
@@ -121,6 +129,20 @@ export default function DialogWindow() {
             value={message}
             onChange={(event) => setMessage(event.target.value)}
           />
+
+          <TextField
+            autoFocus
+            margin="dense"
+            id="phone"
+            label="phone"
+            type="text"
+            fullWidth
+            variant="standard"
+            value={phone}
+            onChange={(event) => setPhone(event.target.value)}
+          />
+
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

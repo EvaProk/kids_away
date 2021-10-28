@@ -14,7 +14,7 @@ export default function ConfirmBadge() {
   };
 
   return (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="row" spacing={2}>
       <Chip
         label="confirm icon"
         onClick={handleClick}
