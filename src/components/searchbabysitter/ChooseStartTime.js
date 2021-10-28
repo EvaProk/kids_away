@@ -21,7 +21,7 @@ export default function ChooseStartTime(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          //value={startTime}
+          value={props.value}
           label="Start Time"
           onChange={(event)=> props.changeStartTime(event.target.value)}
         >

@@ -20,7 +20,7 @@ export default function ChooseLanguage(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          // value={age}
+          value={props.value}
           label="Language"
           onChange={(event)=>{props.changeLanguage(event.target.value)}}
         >
