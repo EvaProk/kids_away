@@ -18,7 +18,7 @@ export default function ChooseAge(props) {
       <RadioGroup row
         aria-label="age"
         name="controlled-radio-buttons-group"
-        //value={value}
+        value={props.value}
         onChange={(event)=>{props.changeAge(event.target.value)}}
       >
         <FormControlLabel value="infants" control={<Radio />} label="0-2" />
