@@ -218,16 +218,29 @@ export default function SearchBabysitter(props) {
     setFilteredSitters(res);
   }, [startTime, date, endTime, age, language]);
 
-  const babysittersList = filteredSitters.map((sitter) => (
-    <Grid item xs={12} sm={6} md={4} lg={3}>
+  const babysittersList = filteredSitters.map((sitter) =>{
+    let sumHours=0;
+    let parentBack={};
+    let arr = [...sitter.orders]
+    arr.forEach((elem)=>{parentBack[elem.parent_id]=(parentBack[elem.parent_id] || 0) +1;});
+    sitter.orders.map((order)=>{
+      sumHours+=order.hours;
+     
+    });
+    return (<Grid item xs={12} sm={6} md={4} lg={3}>
       <CardItem
+        key={sitter.id}
         image={sitter.photo}
         name={sitter.first_name}
         orders={sitter.orders.length}
+        hours={sumHours}
+        parentsBack={Object.keys(parentBack).length}
         id={sitter.id}
       />
     </Grid>
-  ));
+    )
+  }
+  );
 
   return (
     <div className="searchPage">

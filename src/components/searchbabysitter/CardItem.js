@@ -38,13 +38,13 @@ export default function CardItem(props) {
 
         <CardContent style={{ justifyContent: "space-evenly", display: "flex", flexDirection: "row" }} >
           <Grid container direction="column" alignItems="center">
-            <StarOutline color="secondary" /><p >{props.orders}Orders</p>
+            <StarOutline color="secondary" /><p >{props.orders} Orders</p>
           </Grid>
           <Grid container direction="column" alignItems="center">
-            <AccessTime color="secondary" /><p>With kids </p>
+            <AccessTime color="secondary" /><p>{props.hours} Hours with kids </p>
           </Grid>
           <Grid container direction="column" alignItems="center">
-            <PersonOutline color="secondary" /><p>Families </p>
+            <PersonOutline color="secondary" /><p>{props.parentsBack} Families came back</p>
         </Grid>
         </CardContent >
       </CardActionArea>
