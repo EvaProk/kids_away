@@ -4,7 +4,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-
+import night from '../../images/night.jpg';
+import craft from '../../images/crafts.jpg';
+import outside from '../../images/outside.jpg';
+import swimming from '../../images/swimming.jpg';
+import pet from '../../images/pet.jpg';
+import pickup from '../../images/pickup.jpg';
 
 export default function ServicesCard() {
   return (
@@ -18,10 +23,8 @@ export default function ServicesCard() {
           <Card sx={{ width: 120, height: 140 }} style={{ margin: "5px" }}>
             <CardMedia
               component="img"
-
               width="120"
-
-              image="images/night.jpg"
+              image={night}
               alt="Overnight"
             />
             <CardContent>
@@ -39,8 +42,8 @@ export default function ServicesCard() {
 
               width="120"
 
-              image="images/crafts.jpg"
-              alt="Overnight"
+              image={craft}
+              alt="Craft"
             />
             <CardContent>
               <Typography gutterBottom variant="p" component="div">
@@ -55,8 +58,8 @@ export default function ServicesCard() {
             <CardMedia
               component="img"
               width="120"
-              image="images/outside.jpg"
-              alt="Overnight"
+              image={outside}
+              alt="Outside"
             />
             <CardContent>
               <Typography gutterBottom variant="p" component="div">
@@ -73,8 +76,8 @@ export default function ServicesCard() {
 
               width="120"
 
-              image="images/Swimming.jpg"
-              alt="Overnight"
+              image={swimming}
+              alt="Swimming"
             />
             <CardContent>
               <Typography gutterBottom variant="p" component="div">
@@ -91,8 +94,8 @@ export default function ServicesCard() {
 
               width="120"
 
-              image="images/pet.jpg"
-              alt="Overnight"
+              image={pet}
+              alt="Pet"
             />
             <CardContent>
               <Typography gutterBottom variant="p" component="div">
@@ -109,8 +112,8 @@ export default function ServicesCard() {
 
               width="120"
 
-              image="images/pickup.jpg"
-              alt="Overnight"
+              image={pickup}
+              alt="Pickup"
             />
             <CardContent>
               <Typography gutterBottom variant="p" component="div">
