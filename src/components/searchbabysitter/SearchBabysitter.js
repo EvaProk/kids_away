@@ -216,6 +216,7 @@ export default function SearchBabysitter(props) {
       });
     }
     localStorage.setItem('date',date);
+    localStorage.setItem('age', age);
     localStorage.setItem('startTime',startTime);
     localStorage.setItem('endTime',endTime);
     localStorage.setItem('language',language);
