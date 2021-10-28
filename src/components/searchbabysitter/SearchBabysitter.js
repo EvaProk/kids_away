@@ -220,6 +220,7 @@ export default function SearchBabysitter(props) {
     localStorage.setItem('startTime',startTime);
     localStorage.setItem('endTime',endTime);
     localStorage.setItem('language',language);
+    localStorage.setItem('age',age);
     setFilteredSitters(res);
   }, [startTime, date, endTime, age, language]);
 
