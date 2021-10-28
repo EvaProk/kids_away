@@ -48,18 +48,18 @@ export default function DialogWindow() {
         <DialogContent>
 
       
-        <ChooseDate />
+        <ChooseDate value={localStorage.getItem('date')}/>
         <Stack spacing={2} direction="row">
 
-          <ChooseStartTime />
-          <ChooseEndTime />
+          <ChooseStartTime value={localStorage.getItem('startTime')}/>
+          <ChooseEndTime value={localStorage.getItem('endTime')}/>
           </Stack>
        
         <ChooseCity />
        
         <ChooseAge />
        
-        <ChooseLanguage />
+        <ChooseLanguage value={localStorage.getItem('language')}/>
         
         <ChooseActivity />
         

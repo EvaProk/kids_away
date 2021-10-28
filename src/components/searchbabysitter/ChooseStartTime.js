@@ -21,17 +21,11 @@ export default function ChooseStartTime(props) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          //value={startTime}
+          value={props.value}
           label="Start Time"
           onChange={(event)=> props.changeStartTime(event.target.value)}
         >
-          <MenuItem value={"00:00:00"}>12am</MenuItem>
-          <MenuItem value={"01:00:00"}>1am</MenuItem>
-          <MenuItem value={"02:00:00"}>2am</MenuItem>
-          <MenuItem value={"03:00:00"}>3am</MenuItem>
-          <MenuItem value={"04:00:00"}>4am</MenuItem>
-          <MenuItem value={"05:00:00"}>5am</MenuItem>
-          <MenuItem value={"06:00:00"}>6am</MenuItem>
+           <MenuItem value={"06:00:00"}>6am</MenuItem>
           <MenuItem value={"07:00:00"}>7am</MenuItem>
           <MenuItem value={"08:00:00"}>8am</MenuItem>
           <MenuItem value={"09:00:00"}>9am</MenuItem>

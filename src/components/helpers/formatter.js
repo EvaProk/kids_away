@@ -1,5 +1,5 @@
 //formatting date function
-export const formatDate = date => {
+export default function formatDate(date) {
   const formattedDate = date.toString().split(' ').slice(0, 4).join(" ")
 
   const d = new Date(formattedDate),
@@ -13,4 +13,4 @@ export const formatDate = date => {
     day = '0' + day;
 
   return [year, month, day].join('-');
-}
+};

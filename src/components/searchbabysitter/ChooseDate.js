@@ -13,7 +13,7 @@ export default function ChooseDate(props) {
       <LocalizationProvider sx={{ m: 1, width: 400 }} dateAdapter={AdapterDateFns} >
         <DatePicker
           label="Choose Date"
-          // value={value}
+          value={props.value}
           onChange={(value) => props.changeDate(value)}
           renderInput={(params) => <TextField {...params} />}
         />
