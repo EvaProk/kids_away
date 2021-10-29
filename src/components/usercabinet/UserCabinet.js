@@ -19,8 +19,7 @@ import formatDate from "../helpers/formatter";
 
 export default function UserCabinet() {
   const [value, setValue] = useState('1');
-  const [confirmWindowOpen, setConfirmWindowOpen] = useState(false)
-
+  const [confirmWindowOpen, setConfirmWindowOpen] = useState(false);
 
   const [state, setState] = useState({
   
@@ -76,7 +75,9 @@ export default function UserCabinet() {
 
           <RateBabysitter
           open={confirmWindowOpen}
-          onClose={()=> setConfirmWindowOpen(false) }/> </div> : null }
+          onClose={()=> setConfirmWindowOpen(false) }
+          id={order.id}/> </div> : null }
+          
 
 
 

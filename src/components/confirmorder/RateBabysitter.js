@@ -10,10 +10,41 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
+
+
 
 export default function RateBabysitter(props) {
-  const [value, setValue] = useState(0);
+  const [rate, setRate] = useState(0);
   const [message, setMessage] = useState("");
+  // const { id } = useParams();
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const review = {
+      rate,
+      message,
+      order_id: props.id
+    };
+    console.log(review)
+
+    return axios.post('/user-review', null, {params: { review }})
+     .then(response => {
+      console.log(response)
+     
+
+    //  if(response.status === 200){
+      
+       
+     })
+     .finally(()=> props.onClose())
+      
+      };
 
   return (
     <Dialog
@@ -41,9 +72,9 @@ export default function RateBabysitter(props) {
             </Typography>
             <Rating
               name="simple-controlled"
-              value={value}
+              value={rate}
               onChange={(event, newValue) => {
-                setValue(newValue);
+                setRate(newValue);
               }}
             />
           </Stack>
@@ -66,8 +97,7 @@ export default function RateBabysitter(props) {
 
           <Button
             variant="contained"
-            component={Link}
-            to="/"
+            onClick={handleSubmit}
             style={{ width: "30%" }}
           >
             Submit
