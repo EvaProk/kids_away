@@ -34,6 +34,7 @@ export default function UserCabinet() {
                 })
   },[setState.orders]);
 
+  
 
   if(state.loading)
   {
@@ -44,6 +45,19 @@ export default function UserCabinet() {
 
   const order = state.orders[0]
   console.log(order)
+
+  function deleteOrder(order) {
+    setState({ ...state, orders: state.orders.slice(1)})
+    console.log ("-------------->", state.orders)
+    return axios.delete(`/delete-order`, { params: { order } })
+  
+      // .then(() => {
+      //   console.log (order)
+      //  setState({ ...state, orders: state.orders.slice(1) })
+
+      // })
+  };
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,6 +85,8 @@ export default function UserCabinet() {
           status={order.status}
           hours={order.hours}
           onFinish={()=> setConfirmWindowOpen(true)}
+          onDelete={()=> deleteOrder(order)}
+        
           />
 
           <RateBabysitter
