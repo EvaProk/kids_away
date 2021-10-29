@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 
 
 export default function EndTime(props) {
-  const [endTime, setEndTime] = useState('');
+  const [endTime, setEndTime] = useState(props.end_time);
 
   const handleChange = (event) => {
     setEndTime(event.target.value);

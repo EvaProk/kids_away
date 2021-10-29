@@ -5,8 +5,8 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import Stack from '@mui/material/Stack';
 
-export default function Calendar() {
-  const [value, setValue] = React.useState(new Date());
+export default function Calendar(props) {
+  const [value, setValue] = React.useState(props.day);
   console.log(value);
   const DateStyle = {
     width: '150px',
