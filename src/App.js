@@ -11,7 +11,7 @@ import Favourites from './components/Favourites';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch,Route }  from "react-router-dom";
-import BabysitterCabinet from './components/babysittercabinet/babysitterCabinet';
+import SitterCabinet from './components/babysittercabinet/SitterCabinet';
 
 const theme = createTheme({
     palette: {
@@ -60,7 +60,7 @@ function App() {
             <UserCabinet/>
           </Route>
           <Route path="/babysitterCabinet">
-            <BabysitterCabinet/>
+            <SitterCabinet/>
           </Route>
        
           <Route path="/favourites">
