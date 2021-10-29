@@ -6,7 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Link } from "react-router-dom";
+import { Link , Redirect} from "react-router-dom";
 
 import ChooseDate from "../searchbabysitter/ChooseDate";
 import ChooseStartTime from "../searchbabysitter/ChooseStartTime";
@@ -18,13 +18,11 @@ import ChooseChildren from "../searchbabysitter/ChooseChildren";
 import Stack from "@mui/material/Stack";
 import formatDate from "../helpers/formatter";
 import axios from "axios";
-
-import { useParams } from "react-router-dom";
-
-
-
+import { useParams} from "react-router-dom";
 import ConfirmWindow from "../confirmorder/ConfirmWindow"
 import UserCabinet from "../usercabinet/UserCabinet"
+// import { Redirect } from 'react-router'
+
 
 
 
@@ -33,10 +31,12 @@ export default function DialogWindow() {
   const { id } = useParams();
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-
   const [activity, setActivity] = useState("");
   const [message, setMessage] = useState("");
   const [number, setNumber] = useState("");
+  const [confirmWindowOpen, setConfirmWindowOpen] = useState(false)
+
+  
 
 
   const handleSubmit = (event) => {
@@ -60,12 +60,13 @@ export default function DialogWindow() {
 
     return axios.post('/neworder', null, {params: { order }})
      .then(response => {
+      console.log(response)
+
      if(response.status === 200){
-       <ConfirmWindow/>
+      setConfirmWindowOpen(true)
        }
      })
-      .then(()=> 
-     <UserCabinet/>)
+      
       };
   
 
@@ -78,6 +79,10 @@ export default function DialogWindow() {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleConfirm = () => {
+   
+    <Redirect to="/user-cabinet"/>
+ };
 
   return (
     <div>
@@ -151,6 +156,7 @@ export default function DialogWindow() {
           </Button>
         </DialogActions>
       </Dialog>
+      <ConfirmWindow open={confirmWindowOpen} onClose={()=>setConfirmWindowOpen(false)} onConfirm={handleConfirm}/>
     </div>
   );
 }

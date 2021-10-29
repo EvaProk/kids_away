@@ -6,39 +6,34 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function AlertDialog() {
-  const [open, setOpen] = useState(false);
+export default function ConfirmWindow(props) {
+  // const [open, setOpen] = useState(props.open);
 
   // const handleClickOpen = () => {
   //   setOpen(true);
   // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button> */}
+    
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={props.onClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Thank You! Your order has been sent. Babysitter will confirm it shortly. Have a great dayQ
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" variant="contained" onClick={handleClose} autoFocus>
-            Close
+          <Button color="primary" variant="contained" onClick={props.onConfirm} autoFocus>
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>
