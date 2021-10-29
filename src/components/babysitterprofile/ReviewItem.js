@@ -31,7 +31,7 @@ export default function ReviewItem(props) {
             {props.name}
           </Typography>
           <Rating name="read-only" size="small" value={props.rating} readOnly />
-           <ListItemText secondary={ props.comment} style={{ fontSize:'3em'}}  />
+           <ListItemText secondary={ props.comment} />
 
 
         </Stack>
