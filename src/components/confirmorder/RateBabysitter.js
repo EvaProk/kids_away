@@ -11,17 +11,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
-
-
 
 export default function RateBabysitter(props) {
   const [rate, setRate] = useState(0);
   const [message, setMessage] = useState("");
-  // const { id } = useParams();
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,22 +22,17 @@ export default function RateBabysitter(props) {
     const review = {
       rate,
       message,
-      order_id: props.id
+      order_id: props.id,
+      status: "completed",
     };
-    console.log(review)
 
-    return axios.post('/user-review', null, {params: { review }})
-     .then(response => {
-      console.log(response)
-     
-
-    //  if(response.status === 200){
-      
-       
-     })
-     .finally(()=> props.onClose())
-      
-      };
+    return axios
+      .post("/user-review", null, { params: { review } })
+      .then((response) => {
+        console.log(review);
+      })
+      .finally(() => props.onClose());
+  };
 
   return (
     <Dialog

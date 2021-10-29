@@ -112,11 +112,10 @@ export default function OrderDetails(props) {
         </Button>
         <Button
           variant="contained"
-          component={Link}
-          to="/"
+          onClick={props.onDelete}
           style={{ width: "30%" }}
         >
-          Cancel Order
+          Delete Order
         </Button>
       </Stack>
     </Paper>
