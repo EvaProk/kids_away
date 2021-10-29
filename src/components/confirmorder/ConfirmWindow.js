@@ -1,11 +1,10 @@
-import {useState, React }  from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Link } from 'react-router-dom';
+import { useState, React } from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import { Link } from "react-router-dom";
 
 export default function ConfirmWindow(props) {
   // const [open, setOpen] = useState(props.open);
@@ -20,7 +19,6 @@ export default function ConfirmWindow(props) {
 
   return (
     <div>
-    
       <Dialog
         open={props.open}
         onClose={props.onClose}
@@ -29,13 +27,18 @@ export default function ConfirmWindow(props) {
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Thank You! Your order has been sent. Babysitter will confirm it shortly. Have a great dayQ
+            {props.message}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-        <Button component={Link} to='/user-cabinet' color="primary" variant="contained" autoFocus>
-
-Confirm
+          <Button
+            component={Link}
+            to="/user-cabinet"
+            color="primary"
+            variant="contained"
+            autoFocus
+          >
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

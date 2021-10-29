@@ -6,7 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Link , Redirect} from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import ChooseDate from "../searchbabysitter/ChooseDate";
 import ChooseStartTime from "../searchbabysitter/ChooseStartTime";
@@ -18,14 +18,10 @@ import ChooseChildren from "../searchbabysitter/ChooseChildren";
 import Stack from "@mui/material/Stack";
 import formatDate from "../helpers/formatter";
 import axios from "axios";
-import { useParams} from "react-router-dom";
-import ConfirmWindow from "../confirmorder/ConfirmWindow"
-import UserCabinet from "../usercabinet/UserCabinet"
+import { useParams } from "react-router-dom";
+import ConfirmWindow from "../confirmorder/ConfirmWindow";
+import UserCabinet from "../usercabinet/UserCabinet";
 // import { Redirect } from 'react-router'
-
-
-
-
 
 export default function DialogWindow() {
   const { id } = useParams();
@@ -34,7 +30,7 @@ export default function DialogWindow() {
   const [activity, setActivity] = useState("");
   const [message, setMessage] = useState("");
   const [number, setNumber] = useState("");
-  const [confirmWindowOpen, setConfirmWindowOpen] = useState(false)
+  const [confirmWindowOpen, setConfirmWindowOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (event) => {
@@ -51,22 +47,19 @@ export default function DialogWindow() {
       date: formatDate(localStorage.getItem("date")),
       startTime: localStorage.getItem("startTime"),
       endTime: localStorage.getItem("endTime"),
-      language: localStorage.getItem("language"), 
+      language: localStorage.getItem("language"),
     };
 
-    return axios.post('/neworder', null, {params: { order }})
-     .then(response => {
-      console.log(response)
+    return axios
+      .post("/neworder", null, { params: { order } })
+      .then((response) => {
+        console.log(response);
 
-     if(response.status === 200){
-      setConfirmWindowOpen(true)
-       }
-     })
-      
-      };
-  
-
-  
+        if (response.status === 200) {
+          setConfirmWindowOpen(true);
+        }
+      });
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,10 +69,6 @@ export default function DialogWindow() {
     setOpen(false);
   };
 
-//   const handleConfirm = () => {
-   
-//     <Redirect to="/user-cabinet"/>
-//  };
 
   return (
     <div>
@@ -95,19 +84,19 @@ export default function DialogWindow() {
             <ChooseEndTime value={localStorage.getItem("endTime")} />
           </Stack>
 
-          <ChooseAge
-            value={localStorage.getItem("age")}
-          />
+          <ChooseAge value={localStorage.getItem("age")} />
 
           <ChooseLanguage value={localStorage.getItem("language")} />
 
           <ChooseChildren
-          value={number}
-          onChange={(event) => setNumber(event.target.value)}/>
+            value={number}
+            onChange={(event) => setNumber(event.target.value)}
+          />
 
           <ChooseActivity
-          value={activity}
-          onChange={(event) => setActivity(event.target.value)} />
+            value={activity}
+            onChange={(event) => setActivity(event.target.value)}
+          />
 
           <TextField
             autoFocus
@@ -143,8 +132,6 @@ export default function DialogWindow() {
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
           />
-
-
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -153,7 +140,11 @@ export default function DialogWindow() {
           </Button>
         </DialogActions>
       </Dialog>
-      <ConfirmWindow open={confirmWindowOpen} onClose={()=>setConfirmWindowOpen(false)} />
+      <ConfirmWindow
+        open={confirmWindowOpen}
+        onClose={() => setConfirmWindowOpen(false)}
+        message={"Thank You! Your order has been sent. Babysitter will confirm it shortly. Have a great day!"}
+      />
     </div>
   );
 }
