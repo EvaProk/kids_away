@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 
 
 export default function StartTime(props) {
-  const [startTime, setStartTime] = useState('');
+  const [startTime, setStartTime] = useState(props.start_time);
 
   const handleChange = (event) => {
     setStartTime(event.target.value);
