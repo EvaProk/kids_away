@@ -47,3 +47,13 @@ export const appointments = [
       endDate: new Date("2021-05-27T19:00:00.000Z"),
   }
 ];
+const date = new Date();
+console.log('newDate', date);
+console.log("date outside the func",  date.toLocaleTimeString('en-US'), "dateeee", date.toLocaleDateString() )
+const year=date.toLocaleDateString().slice(-4);
+const day=date.toLocaleDateString().slice(3,5);
+const month=date.toLocaleDateString().slice(0,2);
+console.log("yaer",year, "day", day, month)
+//console.log("jbcjsbc",2021-10-26T17:00:00.000Z.toLocaleTimeString('en-US'));
+
+//const [currentDate, setCurrentDate] = useState(`${year}-${month}-${day}`);
