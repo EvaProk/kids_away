@@ -1,4 +1,4 @@
-import { React, useState }  from 'react';
+import { React, useState, useEffect }  from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -8,12 +8,43 @@ import OrderDetails from "../confirmorder/OrderDetails";
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Typography from "@mui/material/Typography";
+import RateBabysitter from "../confirmorder/RateBabysitter";
+import axios from "axios";
+import formatDate from "../helpers/formatter";
+
+
 
 
 
 
 export default function UserCabinet() {
   const [value, setValue] = useState('1');
+  const [confirmWindowOpen, setConfirmWindowOpen] = useState(false)
+
+
+  const [state, setState] = useState({
+  
+    orders: [],
+    loading:true
+  });
+
+  useEffect(()=>{
+    return axios.get('/user-cabinet' )
+                .then((res)=>{
+                  setState((prev)=>({...prev, orders: res.data, loading: false}))
+                })
+  },[setState.orders]);
+
+
+  if(state.loading)
+  {
+    console.log("loading calling",state.loading);
+    return <div></div>
+  }
+  else {
+
+  const order = state.orders[0]
+  console.log(order)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -30,7 +61,25 @@ export default function UserCabinet() {
           </TabList>
         </Box>
         <TabPanel value="1">
-          <OrderDetails/>
+          {order.status === "created" || order.status === "confirmed" ? <div> 
+          <OrderDetails
+          date={formatDate(order.date)}
+          startTime={order.start_time}
+          endTime={order.end_time}
+          address={order.address}
+          numChildren={order.num_of_kids}
+          message={order.comment}
+          status={order.status}
+          hours={order.hours}
+          onFinish={()=> setConfirmWindowOpen(true)}
+          />
+
+          <RateBabysitter
+          open={confirmWindowOpen}
+          onClose={()=> setConfirmWindowOpen(false) }/> </div> : null }
+
+
+
         </TabPanel>
         <TabPanel value="2">
         <Typography color="secondary" variant="h3" style={{ fontWeight: 600 }}> Create New Order</Typography>
@@ -39,6 +88,10 @@ export default function UserCabinet() {
         </TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
       </TabContext>
+    
     </Box>
+
+  
   );
+  }
 }

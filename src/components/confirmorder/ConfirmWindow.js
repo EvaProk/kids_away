@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Link } from 'react-router-dom';
 
 export default function ConfirmWindow(props) {
   // const [open, setOpen] = useState(props.open);
@@ -32,8 +33,9 @@ export default function ConfirmWindow(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" variant="contained" onClick={props.onConfirm} autoFocus>
-            Confirm
+        <Button component={Link} to='/user-cabinet' color="primary" variant="contained" autoFocus>
+
+Confirm
           </Button>
         </DialogActions>
       </Dialog>

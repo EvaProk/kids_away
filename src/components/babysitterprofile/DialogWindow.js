@@ -35,9 +35,7 @@ export default function DialogWindow() {
   const [message, setMessage] = useState("");
   const [number, setNumber] = useState("");
   const [confirmWindowOpen, setConfirmWindowOpen] = useState(false)
-
-  
-
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,8 +54,6 @@ export default function DialogWindow() {
       language: localStorage.getItem("language"), 
     };
 
-    console.log("order", order);
-
     return axios.post('/neworder', null, {params: { order }})
      .then(response => {
       console.log(response)
@@ -70,7 +66,7 @@ export default function DialogWindow() {
       };
   
 
-  const [open, setOpen] = useState(false);
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -79,10 +75,11 @@ export default function DialogWindow() {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleConfirm = () => {
+
+//   const handleConfirm = () => {
    
-    <Redirect to="/user-cabinet"/>
- };
+//     <Redirect to="/user-cabinet"/>
+//  };
 
   return (
     <div>
@@ -156,7 +153,7 @@ export default function DialogWindow() {
           </Button>
         </DialogActions>
       </Dialog>
-      <ConfirmWindow open={confirmWindowOpen} onClose={()=>setConfirmWindowOpen(false)} onConfirm={handleConfirm}/>
+      <ConfirmWindow open={confirmWindowOpen} onClose={()=>setConfirmWindowOpen(false)} />
     </div>
   );
 }
