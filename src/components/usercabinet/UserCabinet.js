@@ -21,8 +21,7 @@ export default function UserCabinet() {
   const [value, setValue] = useState('1');
   const [confirmWindowOpen, setConfirmWindowOpen] = useState(false);
 
-  const [state, setState] = useState({
-  
+  const [state, setState] = useState({  
     orders: [],
     loading:true
   });
@@ -32,9 +31,7 @@ export default function UserCabinet() {
                 .then((res)=>{
                   setState((prev)=>({...prev, orders: res.data, loading: false}))
                 })
-  },[setState.orders]);
-
-  
+  },[setState.orders]);  
 
   if(state.loading)
   {
@@ -42,14 +39,13 @@ export default function UserCabinet() {
     return <div></div>
   }
   else {
-
-  const order = state.orders[0]
+  const order = state.orders[state.orders.length-1]
   console.log(order)
 
   function deleteOrder(order) {
     setState({ ...state, orders: state.orders.slice(1)})
     console.log ("-------------->", state.orders)
-    return axios.delete(`/delete-order`, { params: { order } })
+    return axios.post(`/delete-order`,null, { params: { order } })
   
       // .then(() => {
       //   console.log (order)
@@ -62,6 +58,7 @@ export default function UserCabinet() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+ 
 
   return (
     <Box sx={{ width: '100%', typography: 'body1' }} >
@@ -85,18 +82,12 @@ export default function UserCabinet() {
           status={order.status}
           hours={order.hours}
           onFinish={()=> setConfirmWindowOpen(true)}
-          onDelete={()=> deleteOrder(order)}
-        
+          onDelete={()=> deleteOrder(order)}        
           />
-
           <RateBabysitter
           open={confirmWindowOpen}
           onClose={()=> setConfirmWindowOpen(false) }
-          id={order.id}/> </div> : null }
-          
-
-
-
+          id={order.id}/> </div> : null }  
         </TabPanel>
         <TabPanel value="2">
         <Typography color="secondary" variant="h3" style={{ fontWeight: 600 }}> Create New Order</Typography>
@@ -107,7 +98,6 @@ export default function UserCabinet() {
       </TabContext>
     
     </Box>
-
   
   );
   }
