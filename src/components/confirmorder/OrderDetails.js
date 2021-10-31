@@ -1,4 +1,4 @@
-import { React, useState,  }  from "react";
+import { React, useState } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
@@ -9,12 +9,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import ConfirmBadge from "../confirmorder/ConfirmBadge";
-import Chip from '@mui/material/Chip';
-
+import Chip from "@mui/material/Chip";
+import DoneIcon from "@mui/icons-material/Done";
 
 export default function OrderDetails(props) {
+  // const handleClick = () => {
+  //   console.info("You clicked the Chip.");
+  // };
 
-
+  // const handleDelete = () => {
+  //   console.info("You clicked the delete icon.");
+  // };
 
   return (
     <Paper
@@ -36,7 +41,13 @@ export default function OrderDetails(props) {
           <Typography color="secondary" variant="h5">
             Order Details
           </Typography>
-          <Chip label={props.status}/>
+          <Chip
+          color={props.color}
+            label={props.status}
+             onClick={props.onSubmit}
+            //  onDelete={props.onSubmit}
+            deleteIcon={<DoneIcon />}
+          />
         </Stack>
 
         <ListItem>
@@ -115,7 +126,7 @@ export default function OrderDetails(props) {
           onClick={props.onDelete}
           style={{ width: "30%" }}
         >
-          Delete Order
+          {props.buttonName}
         </Button>
       </Stack>
     </Paper>

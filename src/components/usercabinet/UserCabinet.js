@@ -11,8 +11,6 @@ import Typography from "@mui/material/Typography";
 import RateBabysitter from "../confirmorder/RateBabysitter";
 import PreviousOrderList from "./PreviousOrderList";
 import Navbar from '../Navbar'
-
-
 import axios from "axios";
 import formatDate from "../helpers/formatter";
 
@@ -85,6 +83,7 @@ export default function UserCabinet() {
                   hours={order.hours}
                   onFinish={() => setConfirmWindowOpen(true)}
                   onDelete={() => deleteOrder(order)}
+                  buttonName="Delete Odrer"
                 />
                 <RateBabysitter
                   open={confirmWindowOpen}
