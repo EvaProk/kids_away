@@ -11,6 +11,10 @@ export default function EndTime(props) {
 
   const handleChange = (event) => {
     setEndTime(event.target.value);
+    props.scheduleLineChanged({
+      ...props.item,
+      end_time: event.target.value
+    });
   };
   return (
     <div>

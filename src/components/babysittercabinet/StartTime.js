@@ -11,6 +11,10 @@ export default function StartTime(props) {
 
   const handleChange = (event) => {
     setStartTime(event.target.value);
+    props.scheduleLineChanged({
+      ...props.item,
+      start_time: event.target.value
+    });
   };
   return (
     <div>
