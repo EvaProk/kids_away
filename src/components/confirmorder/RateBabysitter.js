@@ -29,7 +29,7 @@ export default function RateBabysitter(props) {
     return axios
       .post("/user-review", null, { params: { review } })
       .then((response) => {
-        console.log(review);
+        console.log("res from Post to /user-review",response);
       })
       .finally(() => props.onClose());
   };

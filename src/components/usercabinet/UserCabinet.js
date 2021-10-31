@@ -42,6 +42,7 @@ export default function UserCabinet() {
       console.log("-------------->", state.orders);
       return axios
         .post(`/delete-order`, null, { params: { order } })
+
         .then(() => {
           setState({ ...state, orders: state.orders.slice(0,state.orders.length -1) });
           console.log (state)
@@ -98,6 +99,7 @@ export default function UserCabinet() {
               variant="h3"
               style={{ fontWeight: 600 }}
             >
+
               Create New Order
             </Typography>
             <Button
@@ -109,10 +111,11 @@ export default function UserCabinet() {
               Create New Order
             </Button>
           </TabPanel>
+
           <TabPanel value="3">
           <PreviousOrderList/>
           </TabPanel>
-         
+
         </TabContext>
       </Box>
     );
