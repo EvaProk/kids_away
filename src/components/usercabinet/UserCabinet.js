@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import RateBabysitter from "../confirmorder/RateBabysitter";
+import PreviousOrderList from "./PreviousOrderList";
+
 import axios from "axios";
 import formatDate from "../helpers/formatter";
 
@@ -97,7 +99,7 @@ export default function UserCabinet() {
               variant="h3"
               style={{ fontWeight: 600 }}
             >
-              {" "}
+
               Create New Order
             </Typography>
             <Button
@@ -109,7 +111,11 @@ export default function UserCabinet() {
               Create New Order
             </Button>
           </TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
+
+          <TabPanel value="3">
+          <PreviousOrderList/>
+          </TabPanel>
+
         </TabContext>
       </Box>
     );
