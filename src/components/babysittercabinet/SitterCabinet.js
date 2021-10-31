@@ -31,19 +31,36 @@ export default function SitterCabinet(props) {
   if (loaded) {
     return <div></div>;
   } else { 
-   
-    const scheduleList = schedule.map((day) => {
-     
+
+    const scheduleChanged = (newItem) => {
+      let newSchedule = schedule;
+      let itemToChange = newSchedule.filter(item => item.date === newItem.date)[0];
+      if(newItem.start_time !== newSchedule[newSchedule.indexOf(itemToChange)].start_time) {
+        newSchedule[newSchedule.indexOf(itemToChange)].start_time = newItem.start_time;
+      }
+      if(newItem.end_time !== newSchedule[newSchedule.indexOf(itemToChange)].end_time) {
+        newSchedule[newSchedule.indexOf(itemToChange)].end_time = newItem.end_time;
+      }
+      console.log('[!]', newSchedule);
+      setSchedule(newSchedule)
+    }
+
+    const scheduleList = schedule.map((day) => {     
         return (
           <ScheduleLine
+            item={day}
             day={day.date}
             start_time={day.start_time}
             end_time={day.end_time}
+            scheduleChanged={(item)=> scheduleChanged(item)}
           />
-        );          
-   
-
+        ); 
     });
+    
+    const handleSend = () => {
+      console.log("LLL");
+      return axios.post("/babysitterCabinet", null, {params: {schedule}});
+    };
 
     return (
       <Box sx={{ width: "100%", typography: "body1" }}>
@@ -61,6 +78,15 @@ export default function SitterCabinet(props) {
 
           <TabPanel value="1" className="sch">
             {scheduleList}
+            <Button
+                component={Link}
+                to="/babysitterCabinet"
+                color="primary"
+                variant="contained"
+                onClick={handleSend}
+              >
+                Send time
+          </Button>
           </TabPanel>
 
           <TabPanel value="2">
