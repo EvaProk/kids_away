@@ -13,7 +13,7 @@ export default function Favourites(props) {
   const user = cookies.get('user_id');
   console.log("User:", user);
   useEffect(()=>{
-    return axios.get('/favourites', { params: { user_id: 1 } })
+    return axios.get('/favourites', { params: { user_id: "1" } })
                 .then((res)=>{
                   console.log("iii", res);
                   setState((prev)=>({...prev,fav: res.data}))
