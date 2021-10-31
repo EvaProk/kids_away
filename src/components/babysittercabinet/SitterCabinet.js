@@ -11,6 +11,8 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import "./SitterCabinet.css";
 import ScheduleLine from "./ScheduleLine";
+import NavbarBabysitter from '../NavbarBabysitter'
+
 
 export default function SitterCabinet(props) {
   const [value, setValue] = useState("6");
@@ -47,6 +49,7 @@ export default function SitterCabinet(props) {
 
     return (
       <Box sx={{ width: "100%", typography: "body1" }}>
+        <NavbarBabysitter/>
         <TabContext value={value}>
           <Box
             sx={{ borderBottom: 1, borderColor: "divider" }}

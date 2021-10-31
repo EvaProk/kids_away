@@ -18,6 +18,7 @@ import ChooseAge from "../searchbabysitter/ChooseAge";
 import ChooseCity from "../searchbabysitter/ChooseCity";
 import CardItem from "../searchbabysitter/CardItem";
 import Grid from "@mui/material/Grid";
+import Navbar from '../Navbar'
 
 export default function SearchBabysitter(props) {
   //const [city, setCity] = useState("");
@@ -156,16 +157,6 @@ export default function SearchBabysitter(props) {
         }
       });
     }
-    // if (date) {
-    //   console.log("inside date");
-    //   const finalDate= formatDate(date);
-    //   res = res.filter((sitter) => {
-    //     for (const avail of sitter.availability) {
-    //       console.log("equal",avail.date === finalDate);
-    //     return avail.date === finalDate
-    //     }
-    //   });
-    // }
     if (date) {
       console.log("date:", date);
       console.log("inside date", res);
@@ -250,7 +241,11 @@ export default function SearchBabysitter(props) {
   );
 
   return (
+    <div> 
+      <Navbar/>
+
     <div className="searchPage">
+      
       <div className="search">
         <h2> Choose Date</h2>
         <ChooseDate value={date} changeDate={handleDateChange} />
@@ -274,6 +269,7 @@ export default function SearchBabysitter(props) {
           {babysittersList}
         </Grid>
       </div>
+    </div>
     </div>
   );
 }

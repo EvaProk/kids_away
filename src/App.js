@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       
       <ThemeProvider theme={theme}>
-      <Navbar />
+      {/* <Navbar /> */}
         <Switch>
           <Route exact path="/">
             <FirstPage />

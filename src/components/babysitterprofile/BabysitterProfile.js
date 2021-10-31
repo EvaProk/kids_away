@@ -11,6 +11,8 @@ import DialogWindow from "../babysitterprofile/DialogWindow";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from 'react-scroll';
+import Navbar from '../Navbar'
+
 
 export default function BabysitterProfile(props) {
   const { id } = useParams();
@@ -63,6 +65,8 @@ export default function BabysitterProfile(props) {
       console.log("revRate", revRate[revRate.length-1]);
       const avg = Math.round(revRate[revRate.length-1]/reviews.length*10)/10
       return (
+        <div> 
+        <Navbar/>
         <div className="profile">
           <div className="mainProfile">
             <div className="avatar">
@@ -97,6 +101,7 @@ export default function BabysitterProfile(props) {
             </div>
             {reviewList}
           </div>
+        </div>
         </div>
       );
   }

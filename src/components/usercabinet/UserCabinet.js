@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import RateBabysitter from "../confirmorder/RateBabysitter";
 import PreviousOrderList from "./PreviousOrderList";
+import Navbar from '../Navbar'
+
 
 import axios from "axios";
 import formatDate from "../helpers/formatter";
@@ -55,6 +57,8 @@ export default function UserCabinet() {
     };
 
     return (
+      <div> 
+      <Navbar/>
       <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
           <Box
@@ -118,6 +122,7 @@ export default function UserCabinet() {
 
         </TabContext>
       </Box>
+      </div>
     );
   }
 }

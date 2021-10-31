@@ -3,6 +3,8 @@ import Cookies from 'universal-cookie';
 import axios from "axios";
 import ItemFavourites from "./ItemFavourites";
 import "./ItemFav.scss"
+import Navbar from './Navbar'
+
 
 export default function Favourites(props) {
   const [state, setState] = useState({
@@ -30,8 +32,12 @@ export default function Favourites(props) {
     );
   });
   return (
+    <div>  
+      <Navbar/>
     <div className='container_fav'>
+      
       {arr}
+    </div>
     </div>
   )
 
