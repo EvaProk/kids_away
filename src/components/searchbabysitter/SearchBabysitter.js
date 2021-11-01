@@ -124,19 +124,26 @@ export default function SearchBabysitter(props) {
     //   res = res.filter((sitter) => sitter.city === city);
     // }
     if (startTime) {
-      console.log("inside time", res);
+      console.log("inside start time", res);
+
       res = res.filter((sitter) => {
         for (const avail of sitter.availability) {
+          let adjDay = avail.start_time;
+          let adjStart = new Date(adjDay).toLocaleTimeString('ca-Ca',{hourCycle: 'h24'});
+          if (adjStart.length<8) {
+            adjStart = 0+adjStart;
+          }
+          console.log('adjasted end time', adjStart);
           console.log(
             "sitter",
             sitter,
             "avail.t:",
             avail.start_time,
             "“equal”",
-            avail.start_time === startTime
+            adjStart === startTime
           );
-          if (avail.start_time === startTime)
-            return avail.start_time === startTime;
+          if (adjStart === startTime)
+            return adjStart === startTime;
         }
       });
     }
@@ -144,16 +151,23 @@ export default function SearchBabysitter(props) {
       console.log("inside Endtime", res);
       res = res.filter((sitter) => {
         for (const avail of sitter.availability) {
-          console.log("END", endTime);
+          let adjDay2 = avail.end_time;
+          let adjEnd = new Date(adjDay2).toLocaleTimeString('ca-Ca',{hourCycle: 'h24'});
+          if (adjEnd.length<8) {
+            adjEnd = 0+adjEnd;
+          }
+          console.log('adjasted end time', adjEnd);
           console.log(
             "sitter",
             sitter,
-            "avail.tEnd:",
+            "avail.t:",
             avail.end_time,
+            "endTime",endTime,
             "“equal”",
-            avail.end_time === endTime
+            adjEnd === endTime
           );
-          if (avail.end_time === endTime) return avail.end_time === endTime;
+          if (adjEnd === endTime)
+            return adjEnd === endTime;
         }
       });
     }
@@ -171,7 +185,8 @@ export default function SearchBabysitter(props) {
             "“equal”",
             avail.date === finalDate
           );
-          if (avail.date === finalDate) return avail.date === finalDate;
+          let time=avail.start_time.slice(11,19);
+          if (avail.date === finalDate && time!=="07:00:00") return avail.date === finalDate;
         }
       });
     }

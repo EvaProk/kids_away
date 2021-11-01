@@ -1,8 +1,9 @@
 //formatting date function
 export default function formatDate(date) {
-  const formattedDate = date.toString().split(' ').slice(0, 4).join(" ")
+  console.log('date inside help', date);
+  let formattedDate = date.toString().split(' ').slice(0, 4).join(" ")
 
-  const d = new Date(formattedDate),
+  let d = new Date(formattedDate),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
     year = d.getFullYear();
