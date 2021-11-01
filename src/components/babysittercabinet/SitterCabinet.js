@@ -20,6 +20,7 @@ export default function SitterCabinet(props) {
   const [value, setValue] = useState("1");
   const [schedule, setSchedule] = useState([]);
   const [loaded, setLoaded] = useState(true);
+  const [loaded2, setLoaded2] = useState(true);
   const [confirm, setConfirm] = useState("primary");
 
   const [state, setState] = useState({
@@ -29,7 +30,7 @@ export default function SitterCabinet(props) {
   useEffect(() => {
     return axios.get("/sitter-cabinet").then((res) => {
       setState((prev) => ({ ...prev, orders: res.data }));
-      setLoaded(false);
+      setLoaded2(false);
     });
   }, []);
 
@@ -48,9 +49,7 @@ export default function SitterCabinet(props) {
 
 
   // handle the delays on loading data 
-  if (loaded) {
-    return <div></div>;
-  } else {
+  if (!loaded&&!loaded2) {
     // finds last created order
     const order = state.orders[state.orders.length - 1];
     console.log("order-------->", order);
@@ -195,5 +194,8 @@ export default function SitterCabinet(props) {
         </TabContext>
       </Box>
     );
-  }
+  } else 
+  {
+    return <div></div>;
+  } 
 }

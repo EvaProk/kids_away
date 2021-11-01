@@ -13,15 +13,12 @@ import ChooseDate from "../searchbabysitter/ChooseDate";
 import ChooseStartTime from "../searchbabysitter/ChooseStartTime";
 import ChooseEndTime from "../searchbabysitter/ChooseEndTime";
 import ChooseLanguage from "../searchbabysitter/ChooseLanguage";
-import ChooseActivity from "../searchbabysitter/ChooseActivity";
 import ChooseAge from "../searchbabysitter/ChooseAge";
-import ChooseCity from "../searchbabysitter/ChooseCity";
 import CardItem from "../searchbabysitter/CardItem";
 import Grid from "@mui/material/Grid";
 import Navbar from '../Navbar'
 
 export default function SearchBabysitter(props) {
-  //const [city, setCity] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [date, setDate] = useState("");
@@ -119,13 +116,29 @@ export default function SearchBabysitter(props) {
   useEffect(() => {
     let res = allSitters;
     console.log("res at the beginnin", res);
-    // if (city) {
-    //   console.log("inside city");
-    //   res = res.filter((sitter) => sitter.city === city);
-    // }
+  
+    if (date) {
+      console.log("date:", date);
+      console.log("inside date", res);
+      const finalDate = formatDate(date);
+      res = res.filter((sitter) => {
+        for (const avail of sitter.availability) {
+          console.log(
+            "sitter",
+            sitter,
+            "avail.date:",
+            avail.date,
+            "“equal”",
+            avail.date === finalDate
+          );
+          let time=avail.start_time.slice(11,19);
+          if (avail.date === finalDate && time!=="07:00:00") return avail.date === finalDate;
+        }
+      });
+    }
     if (startTime) {
-      console.log("inside start time", res);
 
+      console.log("inside start time", res);
       res = res.filter((sitter) => {
         for (const avail of sitter.availability) {
           let adjDay = avail.start_time;
@@ -133,7 +146,7 @@ export default function SearchBabysitter(props) {
           if (adjStart.length<8) {
             adjStart = 0+adjStart;
           }
-          console.log('adjasted end time', adjStart);
+          console.log('adjasted start time', adjStart);
           console.log(
             "sitter",
             sitter,
@@ -142,11 +155,13 @@ export default function SearchBabysitter(props) {
             "“equal”",
             adjStart === startTime
           );
-          if (adjStart === startTime)
+          console.log(avail.date.slice(0,10), "____start___-----", formatDate(date));
+          if (adjStart === startTime && avail.date.slice(0,10)=== formatDate(date))
             return adjStart === startTime;
         }
       });
     }
+
     if (endTime) {
       console.log("inside Endtime", res);
       res = res.filter((sitter) => {
@@ -166,27 +181,9 @@ export default function SearchBabysitter(props) {
             "“equal”",
             adjEnd === endTime
           );
-          if (adjEnd === endTime)
+          console.log(avail.date.slice(0,10), "_______-----", formatDate(date));
+          if (adjEnd === endTime && avail.date.slice(0,10)=== formatDate(date))
             return adjEnd === endTime;
-        }
-      });
-    }
-    if (date) {
-      console.log("date:", date);
-      console.log("inside date", res);
-      const finalDate = formatDate(date);
-      res = res.filter((sitter) => {
-        for (const avail of sitter.availability) {
-          console.log(
-            "sitter",
-            sitter,
-            "avail.date:",
-            avail.date,
-            "“equal”",
-            avail.date === finalDate
-          );
-          let time=avail.start_time.slice(11,19);
-          if (avail.date === finalDate && time!=="07:00:00") return avail.date === finalDate;
         }
       });
     }
@@ -223,7 +220,6 @@ export default function SearchBabysitter(props) {
       });
     }
     localStorage.setItem('date',date);
-    localStorage.setItem('age', age);
     localStorage.setItem('startTime',startTime);
     localStorage.setItem('endTime',endTime);
     localStorage.setItem('language',language);
