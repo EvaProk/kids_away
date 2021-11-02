@@ -80,7 +80,7 @@ export default function DialogWindow() {
         <DialogContent>
         <Stack direction="column" spacing={2}>      
           <ChooseDate value={localStorage.getItem("date")} disabled/>
-          <Stack spacing={4} direction="row">
+          <Stack spacing={3} direction="row">
             <ChooseStartTime value={localStorage.getItem("startTime")} disabled/>
             <ChooseEndTime value={localStorage.getItem("endTime")} readOnly/>
           </Stack>

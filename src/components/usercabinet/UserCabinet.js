@@ -86,10 +86,12 @@ export default function UserCabinet() {
                   message={order.comment}
                   status={order.status}
                   hours={order.hours}
+                  phone={order.contact_phone}
                   onFinish={() => setConfirmWindowOpen(true)}
                   onDelete={() => deleteOrder(order)}
                   buttonName="Delete Odrer"
                   color={color}
+
                 />
                 <RateBabysitter
                   open={confirmWindowOpen}

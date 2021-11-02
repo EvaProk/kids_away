@@ -24,35 +24,36 @@ export default function OrderDetails(props) {
   return (
     <Paper
       elevation={3}
-      sx={{ width: 550 }}
+      sx={{ width: 450 }}
       style={{ margin: "10px", padding: "10px" }}
     >
       <List sx={{ width: "100%", bgcolor: "background.paper" }}>
         <Stack
           direction="row"
-          spacing={30}
+          spacing={13}
           style={{
-            justifyContent: "center",
-            alignItems: "flex-end",
+            justifyContent: "space-between",
+            // alignItems: "flex-end",
             display: "flex",
             margin: "20px",
           }}
         >
-          <Typography color="secondary" variant="h5">
+          <Typography color="secondary" variant="h5" fontWeight="600">
             Order Details
           </Typography>
           <Chip
           color={props.color}
             label={props.status}
              onClick={props.onSubmit}
-            //  onDelete={props.onSubmit}
-            deleteIcon={<DoneIcon />}
+             style={{
+              width: "7rem"
+            }}
+           
           />
         </Stack>
 
         <ListItem>
           <ListItemText primary="1. Date " />
-
           <Typography color="primary" style={{ fontWeight: 600 }}>
             {props.date}
           </Typography>
@@ -63,44 +64,44 @@ export default function OrderDetails(props) {
             {props.startTime}-{props.endTime}
           </Typography>
         </ListItem>
-
+{/* 
         <ListItem>
           <ListItemText primary="3. Age of children " />
           <Typography color="primary" style={{ fontWeight: 600 }}>
             text text text
           </Typography>
-        </ListItem>
+        </ListItem> */}
 
         <ListItem>
-          <ListItemText primary="4. Number of children " />
+          <ListItemText primary="3. Number of children " />
           <Typography color="primary" style={{ fontWeight: 600 }}>
-            text text text
+            {props.numChildren}
           </Typography>
         </ListItem>
 
-        <ListItem>
+        {/* <ListItem>
           <ListItemText primary="5. Language " />
           <Typography color="primary" style={{ fontWeight: 600 }}>
             text text text
           </Typography>
-        </ListItem>
+        </ListItem> */}
 
         <ListItem>
-          <ListItemText primary="6. Activities " />
+          <ListItemText primary="4. Phone" />
           <Typography color="primary" style={{ fontWeight: 600 }}>
-            text text text
+            {props.phone}
           </Typography>
         </ListItem>
 
         <ListItem>
-          <ListItemText primary="6. Address " />
+          <ListItemText primary="5. Address " />
           <Typography color="primary" style={{ fontWeight: 600 }}>
             {props.address}
           </Typography>
         </ListItem>
 
         <ListItem>
-          <ListItemText primary="7. Message " />
+          <ListItemText primary="6. Message " />
           <Typography color="primary" style={{ fontWeight: 600 }}>
             {props.message}
           </Typography>
@@ -117,14 +118,14 @@ export default function OrderDetails(props) {
         <Button
           variant="contained"
           onClick={props.onFinish}
-          style={{ width: "30%" }}
+          style={{ width: "40%" }}
         >
           Finish order
         </Button>
         <Button
           variant="contained"
           onClick={props.onDelete}
-          style={{ width: "30%" }}
+          style={{ width: "40%" }}
         >
           {props.buttonName}
         </Button>
