@@ -128,6 +128,7 @@ export default function SitterCabinet(props) {
       return axios.post("/babysitterCabinet", null, { params: { schedule } });
     };
 
+   const color = order.status === "created" ? "primary" : "secondary";
 
     return (
       <Box sx={{ width: "100%", typography: "body1" }}>
@@ -174,7 +175,7 @@ export default function SitterCabinet(props) {
                   onClick={handleCancel}
                   buttonName="reject order"
                   onSubmit={handleSubmit}
-                  color={confirm}
+                  color={confirm, color}
                 />
                 <RateParent
                   open={confirmWindowOpen}
