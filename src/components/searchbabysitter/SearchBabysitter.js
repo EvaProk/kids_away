@@ -258,12 +258,16 @@ export default function SearchBabysitter(props) {
     <div className="searchPage">
       
       <div className="search">
+        <Stack direction="column">
+
         <h2> Choose Date</h2>
         <ChooseDate value={date} changeDate={handleDateChange} />
         <h2> What time do you prefer?</h2>
         <div className="time">
+        <Stack spacing={4} direction="row">
           <ChooseStartTime changeStartTime={handleStartTimeChange} />
           <ChooseEndTime changeEndTime={handleEndTimeChange} />
+          </Stack>
         </div>
         {/* <h2> Your City?</h2>
         <ChooseCity changeCity={handleCityCange} /> */}
@@ -273,6 +277,7 @@ export default function SearchBabysitter(props) {
         <ChooseLanguage changeLanguage={handleLanguageChange} />
         {/* <h2> What are we doing today?</h2>
         <ChooseActivity /> */}
+         </Stack>
       </div>
 
       <div className="babysitterList">
