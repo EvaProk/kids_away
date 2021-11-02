@@ -7,6 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import AttachMoneySharpIcon from '@mui/icons-material/AttachMoneySharp';
 import Stack from '@mui/material/Stack';
+import Typography from "@mui/material/Typography";
+
 
 
 export default function HourlyRate(props) {
@@ -15,51 +17,43 @@ export default function HourlyRate(props) {
     
      
     
-    <List sx={{ width: '80%',  bgcolor: 'background.paper' }} alignItems="center" justify="space-between">
+    // <List sx={{ width: '80%',  bgcolor: 'background.paper' }} alignItems="center" justify="space-between">
       <Grid container
-        direction="row"
+        direction="column"
         alignItems="center"
-        justify="space-between" >
-          
-        <Grid item xs={6} sm={6} md={3} lg={3}>
+        justify="flex-start"
+        style={{width: "300px", paddingLeft: "30px", paddingTop: "30px" } } >
+
+       
           <ListItem >
-            <ListItemAvatar>
-              <Avatar>
-                <AttachMoneySharpIcon />
+            <ListItemAvatar >
+              <Avatar >
+                < Typography> {props.prices[0].onekid_onehour}$</Typography>
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={props.prices[0].onekid_onehour} secondary="1 kid/hr" />
+            <ListItemText primary="1 child" secondary="1 hour"/>
           </ListItem>
-        </Grid>
-
-        <Grid item xs={6} sm={6} md={3} lg={3}> 
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <AttachMoneySharpIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={props.prices[0].twokids_onehour} secondary="2 kids/hr" />
-        </ListItem>
-      </Grid>
-
-      <Grid item xs={6} sm={6} md={3} lg={3}>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <AttachMoneySharpIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={props.prices[0].threekids_onehour} secondary="3 kids/hr" />
-        </ListItem>
-      </Grid>
- 
-
+          <ListItem >
+            <ListItemAvatar >
+              <Avatar >
+                < Typography> {props.prices[0].twokids_onehour}$</Typography>
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="2 children" secondary="1 hour"/>
+          </ListItem>
+          <ListItem >
+            <ListItemAvatar >
+              <Avatar >
+                < Typography> {props.prices[0].threekids_onehour}$</Typography>
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="3 children" secondary="1 hour"/>
+          </ListItem>
       </Grid>
 
 
 
-    </List>
+    // </List>
 
 
     // <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>

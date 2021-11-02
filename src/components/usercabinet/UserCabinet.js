@@ -13,6 +13,8 @@ import PreviousOrderList from "./PreviousOrderList";
 import Navbar from '../Navbar'
 import axios from "axios";
 import formatDate from "../helpers/formatter";
+import Stack from "@mui/material/Stack";
+
 
 export default function UserCabinet() {
   const [value, setValue] = useState("1");
@@ -54,6 +56,9 @@ export default function UserCabinet() {
       setValue(newValue);
     };
 
+    const color = order.status === "created"? "primary" : "secondary";
+
+
     return (
       <div> 
       <Navbar/>
@@ -84,6 +89,7 @@ export default function UserCabinet() {
                   onFinish={() => setConfirmWindowOpen(true)}
                   onDelete={() => deleteOrder(order)}
                   buttonName="Delete Odrer"
+                  color={color}
                 />
                 <RateBabysitter
                   open={confirmWindowOpen}
