@@ -23,7 +23,7 @@ export default function ChooseCity(props) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 260 }} >
+      <FormControl fullWidth >
         <InputLabel id="demo-controlled-open-select-label">Activity</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"

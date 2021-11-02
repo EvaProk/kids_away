@@ -69,19 +69,20 @@ export default function DialogWindow() {
     setOpen(false);
   };
 
-
   return (
     <div>
       <Button color="primary" variant="contained" onClick={handleClickOpen}>
         Invite Babysitter
       </Button>
       <Dialog open={open} onClose={handleClose}>
+        
         <DialogTitle>Invite Babysitter</DialogTitle>
         <DialogContent>
-          <ChooseDate value={localStorage.getItem("date")} />
-          <Stack spacing={2} direction="row">
-            <ChooseStartTime value={localStorage.getItem("startTime")} />
-            <ChooseEndTime value={localStorage.getItem("endTime")} />
+        <Stack direction="column" spacing={2}>      
+          <ChooseDate value={localStorage.getItem("date")} disabled/>
+          <Stack spacing={4} direction="row">
+            <ChooseStartTime value={localStorage.getItem("startTime")} disabled/>
+            <ChooseEndTime value={localStorage.getItem("endTime")} readOnly/>
           </Stack>
 
           <ChooseAge value={localStorage.getItem("age")} />
@@ -132,6 +133,7 @@ export default function DialogWindow() {
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
           />
+           </Stack>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -143,7 +145,9 @@ export default function DialogWindow() {
       <ConfirmWindow
         open={confirmWindowOpen}
         onClose={() => setConfirmWindowOpen(false)}
-        message={"Thank You! Your order has been sent. Babysitter will confirm it shortly. Have a great day!"}
+        message={
+          "Thank You! Your order has been sent. Babysitter will confirm it shortly. Have a great day!"
+        }
       />
     </div>
   );

@@ -21,9 +21,9 @@ export default function ChooseAge(props) {
         value={props.value}
         onChange={(event)=>{props.changeAge(event.target.value)}}
       >
-        <FormControlLabel value="infants" control={<Radio />} label="0-2" />
-        <FormControlLabel value="toddler" control={<Radio />} label="3-5" />
-        <FormControlLabel value="schoolage" control={<Radio />} label="5+" />
+        <FormControlLabel value="infants" control={<Radio />} label="Infant" color="text.secondary"/>
+        <FormControlLabel value="toddler" control={<Radio />} label="Toddler" color="text.secondary"/>
+        <FormControlLabel value="schoolage" control={<Radio />} label="School" color="text.secondary"/>
 
       </RadioGroup>
     </FormControl>
