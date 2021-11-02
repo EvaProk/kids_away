@@ -14,6 +14,7 @@ import ScheduleLine from "./ScheduleLine";
 import NavbarBabysitter from "../NavbarBabysitter";
 import formatDate from "../helpers/formatter";
 import RateParent from "./RateParent";
+import PreviousOrderListSitter from "./PreviousOrderListSitter";
 
 export default function SitterCabinet(props) {
   const [confirmWindowOpen, setConfirmWindowOpen] = useState(false);
@@ -127,8 +128,14 @@ export default function SitterCabinet(props) {
       console.log("LLL");
       return axios.post("/babysitterCabinet", null, { params: { schedule } });
     };
-
+    let newInvites = ''
    const color = order.status === "created" ? "primary" : "secondary";
+   console.log("state", state.orders);
+   let createdNum=state.orders.filter((order)=>order.status==="created").length;
+   if (createdNum>0) {
+    newInvites = `+(${createdNum}) new`;
+   }
+   console.log("createdNum", newInvites);
 
     return (
       <Box sx={{ width: "100%", typography: "body1" }}>
@@ -140,7 +147,7 @@ export default function SitterCabinet(props) {
           >
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Your week schedule" value="1" />
-              <Tab label="Create New Order" value="2" />
+              <Tab label={`Current orders ${newInvites}`} value="2" />
               <Tab label="Previous Orders" value="3" />
             </TabList>
           </Box>
@@ -191,7 +198,9 @@ export default function SitterCabinet(props) {
               </div>
             ) : null}
           </TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
+          <TabPanel value="3">
+          <PreviousOrderListSitter orders={state.orders}/>
+          </TabPanel>
         </TabContext>
       </Box>
     );
