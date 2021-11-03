@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import OrderDetails from "../confirmorder/OrderDetails";
+import SitterOrderDetails from "./SitterOrderDetails";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -27,6 +27,8 @@ export default function SitterCabinet(props) {
   const [loaded, setLoaded] = useState(true);
   const [loaded2, setLoaded2] = useState(true);
   const [confirm, setConfirm] = useState("primary");
+  const [status, setStatus] = useState("Confirm");
+
 
   const [state, setState] = useState({
     orders: [],
@@ -89,6 +91,7 @@ export default function SitterCabinet(props) {
         .then((response) => {
           console.log("sent", response);
           setConfirm("secondary");
+          setStatus('confirmed')
         });
     };
     //--------------------------->Scheduler
@@ -117,14 +120,17 @@ export default function SitterCabinet(props) {
 
     const scheduleList = schedule.map((day) => {
       return (
+        <Grid item xs={6} md={3} lg={3}> 
+
         <ScheduleLine
           item={day}
           day={day.date}
           start_time={day.start_time}
           end_time={day.end_time}
           scheduleChanged={(item) => scheduleChanged(item)}
-          style={{backgroundColor: "red", padding: "20px"}}
+          style={{backgroundColor: "red"}}
         />
+        </Grid>
       );
     });
 
@@ -159,11 +165,10 @@ export default function SitterCabinet(props) {
 
           <TabPanel value="1" className="sch" >
             <Stack direction="column" >
-              {/* <Grid container spacing={2}>
-                <Grid item xs={6} md={4} lg={8}> */}
+           <Grid container spacing={1}>
                 {scheduleList}
-                {/* </Grid>
-              </Grid> */}
+              
+              </Grid>
               
 
               <Button
@@ -172,6 +177,8 @@ export default function SitterCabinet(props) {
                 color="primary"
                 variant="contained"
                 onClick={handleSend}
+                style={{ width: "30%",  marginLeft: "30%", marginTop: "2%"  }}
+
               >
                 Send time
               </Button>
@@ -181,7 +188,7 @@ export default function SitterCabinet(props) {
           <TabPanel value="2">
             {order.status === "created" || order.status === "confirmed" ? (
               <div>
-                <OrderDetails
+                <SitterOrderDetails
                   date={formatDate(order.date)}
                   startTime={order.start_time}
                   endTime={order.end_time}
@@ -189,13 +196,15 @@ export default function SitterCabinet(props) {
                   numChildren={order.num_of_kids}
                   message={order.comment}
                   status={order.status}
+                  phone={order.contact_phone}
                   hours={order.hours}
                   onFinish={() => setConfirmWindowOpen(true)}
                   onDelete={handleCancel}
                   onClick={handleCancel}
                   buttonName="reject order"
                   onSubmit={handleSubmit}
-                  color={confirm, color}
+                  color={confirm}
+                  submitName={status}
                 />
                 <RateParent
                   open={confirmWindowOpen}
