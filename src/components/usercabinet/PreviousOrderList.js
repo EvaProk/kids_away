@@ -4,25 +4,30 @@ import PreviousOrderItem from "./PreviousOrderItem";
 
 
 export default function PreviousOrderList(props) {
-  const [state, setState] = useState({
+  // const [state, setState] = useState({
   
-    previous: []
-  });
+  //   previous: []
+  // });
  
-  useEffect(()=>{
-    return axios.get('/favourites', { params: { user_id: 1 } })
-                .then((res)=>{
-                  console.log("iii", res);
-                  setState((prev)=>({...prev, previous: res.data}))
-                })
-  },[setState.fav]);
+  // useEffect(()=>{
+  //   return axios.get('/favourites', { params: { user_id: 1 } })
+  //               .then((res)=>{
+  //                 console.log("iii", res);
+  //                 setState((prev)=>({...prev, previous: res.data}))
+  //               })
+  // },[setState.fav]);
+  const filtered = props.orders.filter((order)=> order.status === 'completed').sort((a,b)=> {return new Date(b.date) - new Date(a.date);});
+console.log("ffff",filtered);
 
-  const previousOrders = state.previous.map((sitter) => {
+  const previousOrders = filtered.map((order) => {
     return (
       <PreviousOrderItem
-      id={sitter.id}
-        name={sitter.first_name}
-        photo={sitter.photo}
+        id={order.sitter_id}
+        date={order.date.slice(0,10)}
+        name={order.sitter_name}
+        photo={order.sitter_photo}
+        comment={order.comment_about_sitter}
+        rate={order.rate}
       />
     );
   });

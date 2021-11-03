@@ -10,7 +10,7 @@ import { CardActionArea } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 
-export default function PreviousOrderItem(props) {
+export default function PreviousOrderItemSitter(props) {
   return (
     <Card
       sx={{
@@ -24,7 +24,7 @@ export default function PreviousOrderItem(props) {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h6" color="primary">
-            On {props.date} {props.name} was taking care of your child
+            On {props.date} you was taking care of {props.name}'s child
           </Typography>
           <Typography
             variant="subtitle1"
@@ -36,16 +36,16 @@ export default function PreviousOrderItem(props) {
           <Rating name="read-only" value={props.rate} size="small" readOnly />
         </CardContent>
       </Box>
-      <Stack> 
-      <CardActionArea component={Link} to={`/babysitter-profile/${props.id}`}>
+      {/* <Stack>  */}
+      {/* <CardActionArea component={Link} to={`/babysitter-profile/${props.id}`}>
         <CardMedia
           component="img"
           sx={{ width: 151 }}
           image={props.photo}
           alt="babysitterPhoto"
         />
-      </CardActionArea>
-      </Stack>
+      </CardActionArea> */}
+      {/* </Stack> */}
     </Card>
   );
 }

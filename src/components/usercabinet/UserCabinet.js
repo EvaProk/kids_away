@@ -124,7 +124,7 @@ export default function UserCabinet() {
           </TabPanel>
 
           <TabPanel value="3">
-          <PreviousOrderList/>
+          <PreviousOrderList orders={state.orders}/>
           </TabPanel>
 
         </TabContext>
