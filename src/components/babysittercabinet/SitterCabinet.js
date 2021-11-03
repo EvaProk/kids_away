@@ -14,14 +14,11 @@ import ScheduleLine from "./ScheduleLine";
 import NavbarBabysitter from "../NavbarBabysitter";
 import formatDate from "../helpers/formatter";
 import RateParent from "./RateParent";
-<<<<<<< HEAD
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import { styled } from '@mui/material/styles';
 
-=======
 import PreviousOrderListSitter from "./PreviousOrderListSitter";
->>>>>>> cdfe93bfad26001fbbf28763b4e4b3ca81a28d49
 
 export default function SitterCabinet(props) {
   const [confirmWindowOpen, setConfirmWindowOpen] = useState(false);
