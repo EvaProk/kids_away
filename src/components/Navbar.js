@@ -33,6 +33,7 @@ export default function Navbar(props) {
       </>
       <div className="navButtons">
         <Stack direction="row">
+          <h2>Hello, Eva!</h2>
           <IconButton component={Link} to="/user-cabinet">
             <AccountCircleOutlined color="secondary" fontSize="large" />
           </IconButton>

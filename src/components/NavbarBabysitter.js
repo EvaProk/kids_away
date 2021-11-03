@@ -32,6 +32,7 @@ export default function NavbarBabysitter(props) {
       </>
       <div className="navButtons">
         <Stack direction="row">
+          <h2>Hello, Sobina!</h2>
           <IconButton component={Link} to="/babysitterCabinet">
             <AccountCircleOutlined color="secondary" fontSize="large" />
           </IconButton>
