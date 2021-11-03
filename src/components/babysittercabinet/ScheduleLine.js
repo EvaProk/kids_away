@@ -16,25 +16,15 @@ export default function ScheduleLine(props) {
     props.scheduleChanged(item);
   };
 
-  // const Item = styled(Paper)(({ theme }) => ({
-  //   ...theme.typography.body2,
-  //   padding: theme.spacing(1),
-  //   textAlign: 'center',
-  //   color: theme.palette.text.secondary,
-  // }));
+ 
 
   return (
 
-   
-    // <Grid container spacing={2}>
-    //     <Grid item lg={4}>
-      
-    
-            
+       
     <Paper
-      elevation={3}
-      sx={{ width: "100%" }}
-      style={{ marginBottom: "10px" }}>
+    elevation={3}
+    sx={{ width: "100%" }}
+    style={{ marginBottom: "10px" }}>
       <List sx={{ width: "100%", bgcolor: "background.paper" }}>
         <ListItem alignItems="space-between" spacing={4}>
           <Stack direction="column" spacing={3}>
@@ -56,8 +46,6 @@ export default function ScheduleLine(props) {
       </List>
     </Paper>
   
-      //   </Grid>
-      // </Grid>
   
   );
 }

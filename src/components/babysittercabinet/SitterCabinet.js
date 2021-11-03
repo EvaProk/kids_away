@@ -157,8 +157,8 @@ export default function SitterCabinet(props) {
             </TabList>
           </Box>
 
-          <TabPanel value="1" className="sch">
-            <Stack direction="column">
+          <TabPanel value="1" className="sch" >
+            <Stack direction="column" >
               {/* <Grid container spacing={2}>
                 <Grid item xs={6} md={4} lg={8}> */}
                 {scheduleList}
@@ -195,7 +195,7 @@ export default function SitterCabinet(props) {
                   onClick={handleCancel}
                   buttonName="reject order"
                   onSubmit={handleSubmit}
-                  color={confirm}
+                  color={confirm, color}
                 />
                 <RateParent
                   open={confirmWindowOpen}
