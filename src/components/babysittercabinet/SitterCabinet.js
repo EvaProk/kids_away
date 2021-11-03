@@ -18,6 +18,12 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import { styled } from '@mui/material/styles';
 
+
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import CloseIcon from '@mui/icons-material/Close';
+
 import PreviousOrderListSitter from "./PreviousOrderListSitter";
 
 export default function SitterCabinet(props) {
@@ -27,6 +33,7 @@ export default function SitterCabinet(props) {
   const [loaded, setLoaded] = useState(true);
   const [loaded2, setLoaded2] = useState(true);
   const [confirm, setConfirm] = useState("primary");
+  const [open, setOpen] = useState(false);
 
   const [state, setState] = useState({
     orders: [],
@@ -129,8 +136,14 @@ export default function SitterCabinet(props) {
     });
 
     const handleSend = () => {
-      console.log("LLL");
-      return axios.post("/babysitterCabinet", null, { params: { schedule } });
+      
+      axios.post("/babysitterCabinet", null, { params: { schedule } })
+      .then(
+        setOpen(true)
+      )
+      .catch((err)=>{
+        console.log("err", err);
+      })
     };
 
     let newInvites = ''
@@ -152,20 +165,39 @@ export default function SitterCabinet(props) {
           >
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Your week schedule" value="1" />
-              <Tab label={`Current orders ${newInvites}`} value="2" />
+              <Tab label={`Current orders     ${newInvites}`} value="2" />
               <Tab label="Previous Orders" value="3" />
             </TabList>
           </Box>
 
           <TabPanel value="1" className="sch" >
             <Stack direction="column" >
+              
               {/* <Grid container spacing={2}>
                 <Grid item xs={6} md={4} lg={8}> */}
                 {scheduleList}
                 {/* </Grid>
               </Grid> */}
               
-
+              <Collapse in={open}>
+                  <Alert
+                    action={
+                      <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => {
+                          setOpen(false);
+                        }}
+                        >
+                          <CloseIcon fontSize="inherit" />
+                      </IconButton>
+                    }
+                      sx={{ mb: 2 }}
+                  >
+                      Your schedule was recorded!
+                  </Alert>
+                </Collapse>
               <Button
                 component={Link}
                 to="/babysitterCabinet"
@@ -174,7 +206,7 @@ export default function SitterCabinet(props) {
                 onClick={handleSend}
               >
                 Send time
-              </Button>
+              </Button>     
             </Stack>
           </TabPanel>
 
