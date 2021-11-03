@@ -38,10 +38,7 @@ export default function Navbar(props) {
           <IconButton component={Link} to="/messages">
             <EmailOutlined color="secondary" fontSize="large" />
           </IconButton>
-          <IconButton component={Link} to="/favourites">
-            <FavoriteBorderOutlined color="secondary" fontSize="large" />
-          </IconButton>
-          <Button variant="outlined" fontSize="large" component={Link} to="/logout" typography="fontFamily" > Logout</Button>
+          <Button variant="outlined" fontSize="large" component={Link} to="/" typography="fontFamily" > Logout</Button>
         </Stack>
       </div>
     </div>
