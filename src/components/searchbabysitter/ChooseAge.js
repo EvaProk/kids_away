@@ -20,10 +20,11 @@ export default function ChooseAge(props) {
         name="controlled-radio-buttons-group"
         value={props.value}
         onChange={(event)=>{props.changeAge(event.target.value)}}
+
       >
-        <FormControlLabel value="infants" control={<Radio />} label="Infant" color="text.secondary"/>
-        <FormControlLabel value="toddler" control={<Radio />} label="Toddler" color="text.secondary"/>
-        <FormControlLabel value="schoolage" control={<Radio />} label="School" color="text.secondary"/>
+        <FormControlLabel value="infants" control={<Radio />} label="Infant" color="text.secondary" inputProps={{ disabled: props.disabled }}/>
+        <FormControlLabel value="toddler" control={<Radio />} label="Toddler" color="text.secondary" inputProps={{ disabled: props.disabled }}/>
+        <FormControlLabel value="schoolage" control={<Radio />} label="School" color="text.secondary" inputProps={{ disabled: props.disabled }}/>
 
       </RadioGroup>
     </FormControl>

@@ -24,6 +24,8 @@ export default function ChooseStartTime(props) {
           value={props.value}
           label="Start Time"
           onChange={(event)=> props.changeStartTime(event.target.value)}
+          inputProps={{ readOnly: props.readOnly , disabled: props.disabled }}
+
         >
            <MenuItem value={"06:00:00"}>6am</MenuItem>
           <MenuItem value={"07:00:00"}>7am</MenuItem>

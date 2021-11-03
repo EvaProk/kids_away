@@ -14,14 +14,15 @@ export default function ChooseStartTime(props) {
   // };
   return (
     <div>
-      <FormControl sx={{  minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-label">End Time</InputLabel>
+      <FormControl sx={{  minWidth: 120 }}  >
+        <InputLabel id="demo-simple-select-label" >End Time</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={props.value}
           label="End Time"
           onChange={(event)=>{props.changeEndTime(event.target.value)}}
+          inputProps={{ readOnly: props.readOnly , disabled: props.disabled }}
         >
 
           <MenuItem value={"06:00:00"}>6am</MenuItem>

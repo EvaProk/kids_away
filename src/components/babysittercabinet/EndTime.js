@@ -18,7 +18,7 @@ export default function EndTime(props) {
   };
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{  minWidth: 120 }}>
         <InputLabel id="demo-simple-select-label">End Time</InputLabel>
         <Select
           labelId="demo-simple-select-label"
