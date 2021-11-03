@@ -30,7 +30,6 @@ export default function ChooseLanguage(props) {
           <MenuItem value={'Russian'}>Russian</MenuItem>
           <MenuItem value={'French'}>French</MenuItem>
           <MenuItem value={'Spanish'}>Spanish</MenuItem>
-          <MenuItem value={'Punjabi'}>Punjabi</MenuItem>
 
         </Select>
       </FormControl>
