@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import OrderDetails from "../confirmorder/OrderDetails";
+import SitterOrderDetails from "./SitterOrderDetails";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -16,13 +16,12 @@ import formatDate from "../helpers/formatter";
 import RateParent from "./RateParent";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 
-
-import Alert from '@mui/material/Alert';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import CloseIcon from '@mui/icons-material/Close';
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
 
 import PreviousOrderListSitter from "./PreviousOrderListSitter";
 
@@ -34,6 +33,7 @@ export default function SitterCabinet(props) {
   const [loaded2, setLoaded2] = useState(true);
   const [confirm, setConfirm] = useState("primary");
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState("Confirm");
 
   const [state, setState] = useState({
     orders: [],
@@ -96,6 +96,7 @@ export default function SitterCabinet(props) {
         .then((response) => {
           console.log("sent", response);
           setConfirm("secondary");
+          setStatus("confirmed");
         });
     };
     //--------------------------->Scheduler
@@ -124,36 +125,38 @@ export default function SitterCabinet(props) {
 
     const scheduleList = schedule.map((day) => {
       return (
-        <ScheduleLine
-          item={day}
-          day={day.date}
-          start_time={day.start_time}
-          end_time={day.end_time}
-          scheduleChanged={(item) => scheduleChanged(item)}
-          style={{backgroundColor: "red", padding: "20px"}}
-        />
+        <Grid item xs={6} md={3} lg={3}>
+          <ScheduleLine
+            item={day}
+            day={day.date}
+            start_time={day.start_time}
+            end_time={day.end_time}
+            scheduleChanged={(item) => scheduleChanged(item)}
+            style={{ backgroundColor: "red" }}
+          />
+        </Grid>
       );
     });
 
     const handleSend = () => {
-      
-      axios.post("/babysitterCabinet", null, { params: { schedule } })
-      .then(
-        setOpen(true)
-      )
-      .catch((err)=>{
-        console.log("err", err);
-      })
+      axios
+        .post("/babysitterCabinet", null, { params: { schedule } })
+        .then(setOpen(true))
+        .catch((err) => {
+          console.log("err", err);
+        });
     };
 
-    let newInvites = ''
-   const color = order.status === "created" ? "primary" : "secondary";
-   console.log("state", state.orders);
-   let createdNum=state.orders.filter((order)=>order.status==="created").length;
-   if (createdNum>0) {
-    newInvites = `+(${createdNum}) new`;
-   }
-   console.log("createdNum", newInvites);
+    let newInvites = "";
+    const color = order.status === "created" ? "primary" : "secondary";
+    console.log("state", state.orders);
+    let createdNum = state.orders.filter(
+      (order) => order.status === "created"
+    ).length;
+    if (createdNum > 0) {
+      newInvites = `+(${createdNum}) new`;
+    }
+    console.log("createdNum", newInvites);
 
     return (
       <Box sx={{ width: "100%", typography: "body1" }}>
@@ -170,50 +173,52 @@ export default function SitterCabinet(props) {
             </TabList>
           </Box>
 
-          <TabPanel value="1" className="sch" >
+          <TabPanel value="1" className="sch">
             <Stack direction="column" >
-              
               {/* <Grid container spacing={2}>
                 <Grid item xs={6} md={4} lg={8}> */}
+              <Grid container spacing={1}>
                 {scheduleList}
-                {/* </Grid>
-              </Grid> */}
-              
-              <Collapse in={open}>
-                  <Alert
-                    action={
-                      <IconButton
-                        aria-label="close"
-                        color="inherit"
-                        size="small"
-                        onClick={() => {
-                          setOpen(false);
-                        }}
-                        >
-                          <CloseIcon fontSize="inherit" />
-                      </IconButton>
-                    }
-                      sx={{ mb: 2 }}
-                  >
-                      Your schedule was recorded!
-                  </Alert>
-                </Collapse>
+              </Grid>
+                {/* <Box sx={{ width: "50%" }}> */}
+              <Collapse in={open} sx={{ width: "50%", alignSelf:'center' }}>
+                <Alert
+                  
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  sx={{ mb: 2 }}
+                >
+                  Your schedule was recorded!
+                </Alert>
+              </Collapse>
+              {/* </Box> */}
               <Button
                 component={Link}
                 to="/babysitterCabinet"
                 color="primary"
                 variant="contained"
                 onClick={handleSend}
+                style={{ width: "30%", marginLeft: "30%", marginTop: "2%" }}
               >
                 Send time
-              </Button>     
+              </Button>
             </Stack>
           </TabPanel>
 
           <TabPanel value="2">
             {order.status === "created" || order.status === "confirmed" ? (
               <div>
-                <OrderDetails
+                <SitterOrderDetails
                   date={formatDate(order.date)}
                   startTime={order.start_time}
                   endTime={order.end_time}
@@ -221,13 +226,15 @@ export default function SitterCabinet(props) {
                   numChildren={order.num_of_kids}
                   message={order.comment}
                   status={order.status}
+                  phone={order.contact_phone}
                   hours={order.hours}
                   onFinish={() => setConfirmWindowOpen(true)}
                   onDelete={handleCancel}
                   onClick={handleCancel}
                   buttonName="reject order"
                   onSubmit={handleSubmit}
-                  color={confirm, color}
+                  color={confirm}
+                  submitName={status}
                 />
                 <RateParent
                   open={confirmWindowOpen}
@@ -244,7 +251,7 @@ export default function SitterCabinet(props) {
             ) : null}
           </TabPanel>
           <TabPanel value="3">
-          <PreviousOrderListSitter orders={state.orders}/>
+            <PreviousOrderListSitter orders={state.orders} />
           </TabPanel>
         </TabContext>
       </Box>

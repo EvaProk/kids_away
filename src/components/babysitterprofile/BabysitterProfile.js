@@ -85,16 +85,28 @@ export default function BabysitterProfile(props) {
                 <div className="rightCorner">
                   <div className="rating">
                     <Stack direction="column" spacing={1}>
-                    <Grid container direction="row" alignItems="center"spacing={1}>
-                        <StarIcon color="secondary" /> <Typography variant="subtitle1" color="text.secondary"> {avg} </Typography>
-                        <Typography variant="subtitle1" color="text.secondary"> <Link
-                          to="about"
-                          smooth={true}
-                          underline="hover"
-                          href="#"
-                        >
-                          ({reviews.length} reviews)
-                        </Link></Typography>
+                      <Grid
+                        container
+                        direction="row"
+                        alignItems="center"
+                        spacing={1}
+                      >
+                        <StarIcon color="secondary" />{" "}
+                        <Typography variant="subtitle1" color="text.secondary">
+                          {" "}
+                          {avg}{" "}
+                        </Typography>
+                        <Typography variant="subtitle1" color="text.secondary">
+                          {" "}
+                          <Link
+                            to="about"
+                            smooth={true}
+                            underline="hover"
+                            href="#"
+                          >
+                            ({reviews.length} reviews)
+                          </Link>
+                        </Typography>
                       </Grid>
                       <Typography
                         variant="subtitle1"
@@ -106,13 +118,51 @@ export default function BabysitterProfile(props) {
                       <Typography variant="subtitle1" color="text.secondary">
                         First Aid <DoneIcon color="primary" />
                       </Typography>
-                     
                     </Stack>
                     <DialogWindow />
                   </div>
                 </div>
               </div>
             </div>
+
+            <div className="bio">
+              <div className="separator">
+                <img
+                  className="separator"
+                  src="/images/separator1.png"
+                  alt="avatarImage"
+                ></img>
+              </div>
+              <h2 id="profileHeader"> Bio</h2>
+              <div className="bioBlock">
+                <div className="imgTwo">
+                  <img
+                    className="imgTwo"
+                    src="/images/globe.png"
+                    alt="avatarImage"
+                  ></img>
+                </div>
+                <p>{profile.bio}</p>
+              </div>
+              <div className="separator">
+                <img
+                  className="separator"
+                  src="/images/separator2.png"
+                  alt="avatarImage"
+                ></img>
+              </div>
+            </div>
+
+            <h2 id="profileHeader">Services</h2>
+            <ServicesCard />
+            <div className="separator">
+              <img
+                className="separator"
+                src="/images/separator1.png"
+                alt="avatarImage"
+              ></img>
+            </div>
+
 
             <div className="generalInfo">
               <div className="separator">
@@ -135,11 +185,7 @@ export default function BabysitterProfile(props) {
                 >
                   <HourlyRate prices={profile.prices} />
                   <div className="img">
-                    <img
-                      className="img"
-                      src="/images/kids.png"
-                      alt="img"
-                    ></img>
+                    <img className="img" src="/images/kids.png" alt="img"></img>
                   </div>
                 </Stack>
               </div>
@@ -153,46 +199,9 @@ export default function BabysitterProfile(props) {
               </div>
             </div>
 
-            <h2 id="profileHeader">Services</h2>
-            <ServicesCard />
-            <div className="separator">
-              <img
-                className="separator"
-                src="/images/separator1.png"
-                alt="avatarImage"
-              ></img>
-            </div>
-            <div className="bio">
-              <div className="separator">
-                <img
-                  className="separator"
-                  src="/images/separator1.png"
-                  alt="avatarImage"
-                ></img>
-              </div>
-              <h2 id="profileHeader"> Bio</h2>
-              <div className="bioBlock"> 
-              
-              <div className="imgTwo">
-                <img
-                  className="imgTwo"
-                  src="/images/globe.png"
-                  alt="avatarImage"
-                ></img>
-              </div>
-              <p>{profile.bio}</p>
 
 
-              </div>
-              <div className="separator">
-                <img
-                  className="separator"
-                  src="/images/separator2.png"
-                  alt="avatarImage"
-                ></img>
-              </div>
-             
-            </div>
+            
 
             <div className="Reviews" id="about">
               <h2 id="profileHeader">Reviews</h2>
