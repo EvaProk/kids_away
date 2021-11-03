@@ -23,6 +23,8 @@ export default function ChooseLanguage(props) {
           value={props.value}
           label="Language"
           onChange={(event)=>{props.changeLanguage(event.target.value)}}
+          inputProps={{ readOnly: props.readOnly , disabled: props.disabled }}
+
         >
           <MenuItem value={'English'}>English</MenuItem>
           <MenuItem value={'Mandarin'}>Mandarin </MenuItem>

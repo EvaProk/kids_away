@@ -7,6 +7,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Link, Redirect } from "react-router-dom";
+import "./BabysitterProfile.scss";
+
+
 
 import ChooseDate from "../searchbabysitter/ChooseDate";
 import ChooseStartTime from "../searchbabysitter/ChooseStartTime";
@@ -79,15 +82,15 @@ export default function DialogWindow() {
         <DialogTitle>Invite Babysitter</DialogTitle>
         <DialogContent>
         <Stack direction="column" spacing={2}>      
-          <ChooseDate value={localStorage.getItem("date")} disabled/>
+          <ChooseDate value={localStorage.getItem("date")} disabled />
           <Stack spacing={3} direction="row">
-            <ChooseStartTime value={localStorage.getItem("startTime")} disabled/>
-            <ChooseEndTime value={localStorage.getItem("endTime")} readOnly/>
+            <ChooseStartTime value={localStorage.getItem("startTime")} disabled readOnly/>
+            <ChooseEndTime value={localStorage.getItem("endTime")} disabled readOnly />
           </Stack>
 
-          <ChooseAge value={localStorage.getItem("age")} />
+          <ChooseAge value={localStorage.getItem("age")} disabled/>
 
-          <ChooseLanguage value={localStorage.getItem("language")} />
+          <ChooseLanguage value={localStorage.getItem("language")} disabled readOnly/>
 
           <ChooseChildren
             value={number}
@@ -125,7 +128,7 @@ export default function DialogWindow() {
           <TextField
             autoFocus
             margin="dense"
-            id="phone"
+            id="Phone"
             label="phone"
             type="text"
             fullWidth

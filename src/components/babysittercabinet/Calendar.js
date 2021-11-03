@@ -8,15 +8,15 @@ import Stack from '@mui/material/Stack';
 export default function Calendar(props) {
   const [value, setValue] = React.useState(props.day);
   console.log(value);
-  const DateStyle = {
-    width: '150px',
-    display: 'flex'
-  };
+  // const DateStyle = {
+  //   width: '150px',
+  //   display: 'flex'
+  // };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Stack spacing={3}>     
-     <div style={DateStyle}>
+     {/* <div style={DateStyle}> */}
         <DatePicker 
           disableFuture
           openTo="day"
@@ -27,7 +27,7 @@ export default function Calendar(props) {
           }}
           renderInput={(params) => <TextField {...params} />}
         />
-      </div>
+      {/* </div> */}
       </Stack>
     </LocalizationProvider>
   );

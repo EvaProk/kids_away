@@ -137,7 +137,7 @@ export default function BabysitterProfile(props) {
                   <div className="img">
                     <img
                       className="img"
-                      src="/images/boyPhoto.png"
+                      src="/images/kids.png"
                       alt="img"
                     ></img>
                   </div>
@@ -176,7 +176,7 @@ export default function BabysitterProfile(props) {
               <div className="imgTwo">
                 <img
                   className="imgTwo"
-                  src="/images/girlPgoto.png"
+                  src="/images/globe.png"
                   alt="avatarImage"
                 ></img>
               </div>

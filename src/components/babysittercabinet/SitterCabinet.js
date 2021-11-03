@@ -14,6 +14,10 @@ import ScheduleLine from "./ScheduleLine";
 import NavbarBabysitter from "../NavbarBabysitter";
 import formatDate from "../helpers/formatter";
 import RateParent from "./RateParent";
+import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
+import { styled } from '@mui/material/styles';
+
 import PreviousOrderListSitter from "./PreviousOrderListSitter";
 
 export default function SitterCabinet(props) {
@@ -48,47 +52,46 @@ export default function SitterCabinet(props) {
     setValue(newValue);
   };
 
-
-  // handle the delays on loading data 
-  if (!loaded&&!loaded2) {
+  // handle the delays on loading data
+  if (!loaded && !loaded2) {
     // finds last created order
     const order = state.orders[state.orders.length - 1];
     console.log("order-------->", order);
 
     //Sitter cancells the order
-  const handleCancel = (event) => {
-    event.preventDefault();
+    const handleCancel = (event) => {
+      event.preventDefault();
 
-    const status = {
-      status: "cancelled",
-      id: order.id
-    };
-    return axios
-      .post("/sitter-status", null, { params: { status } })
-      .then((response) => {
-        console.log("res from Post to /user-review", response);
-        setState({
-          ...state,
-          orders: state.orders.slice(0, state.orders.length - 1),
+      const status = {
+        status: "cancelled",
+        id: order.id,
+      };
+      return axios
+        .post("/sitter-status", null, { params: { status } })
+        .then((response) => {
+          console.log("res from Post to /user-review", response);
+          setState({
+            ...state,
+            orders: state.orders.slice(0, state.orders.length - 1),
+          });
         });
-      });
-  };
-//Sitter confirms hw accepts the order 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const status = {
-      status: "confirmed",
-      id: order.id
     };
+    //Sitter confirms hw accepts the order
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const status = {
+        status: "confirmed",
+        id: order.id,
+      };
 
-    return axios
-      .post("/sitter-status", null, { params: { status } })
-      .then((response) => {
-        console.log("res from Post to /user-review", response);
-        setConfirm("secondary");
-      });
-  };
-//--------------------------->Scheduler
+      return axios
+        .post("/sitter-status", null, { params: { status } })
+        .then((response) => {
+          console.log("sent", response);
+          setConfirm("secondary");
+        });
+    };
+    //--------------------------->Scheduler
     const scheduleChanged = (newItem) => {
       let newSchedule = schedule;
       let itemToChange = newSchedule.filter(
@@ -120,6 +123,7 @@ export default function SitterCabinet(props) {
           start_time={day.start_time}
           end_time={day.end_time}
           scheduleChanged={(item) => scheduleChanged(item)}
+          style={{backgroundColor: "red", padding: "20px"}}
         />
       );
     });
@@ -128,6 +132,7 @@ export default function SitterCabinet(props) {
       console.log("LLL");
       return axios.post("/babysitterCabinet", null, { params: { schedule } });
     };
+
     let newInvites = ''
    const color = order.status === "created" ? "primary" : "secondary";
    console.log("state", state.orders);
@@ -152,17 +157,25 @@ export default function SitterCabinet(props) {
             </TabList>
           </Box>
 
-          <TabPanel value="1" className="sch">
-            {scheduleList}
-            <Button
-              component={Link}
-              to="/babysitterCabinet"
-              color="primary"
-              variant="contained"
-              onClick={handleSend}
-            >
-              Send time
-            </Button>
+          <TabPanel value="1" className="sch" >
+            <Stack direction="column" >
+              {/* <Grid container spacing={2}>
+                <Grid item xs={6} md={4} lg={8}> */}
+                {scheduleList}
+                {/* </Grid>
+              </Grid> */}
+              
+
+              <Button
+                component={Link}
+                to="/babysitterCabinet"
+                color="primary"
+                variant="contained"
+                onClick={handleSend}
+              >
+                Send time
+              </Button>
+            </Stack>
           </TabPanel>
 
           <TabPanel value="2">
@@ -204,8 +217,7 @@ export default function SitterCabinet(props) {
         </TabContext>
       </Box>
     );
-  } else 
-  {
+  } else {
     return <div></div>;
-  } 
+  }
 }

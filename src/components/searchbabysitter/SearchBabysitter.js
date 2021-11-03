@@ -21,7 +21,7 @@ import Navbar from '../Navbar'
 export default function SearchBabysitter(props) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
   const [age, setAge] = useState("");
   const [language, setLanguage] = useState("");
   const [filteredSitters, setFilteredSitters] = useState([]);

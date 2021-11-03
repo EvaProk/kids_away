@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navbar.scss";
+import "./NavMain.scss";
 import Button from '@mui/material/Button';
 import { AccountCircleOutlined , FavoriteBorderOutlined , EmailOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,6 @@ import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import logoElefant from '../images/logoImage.webp'
 import { useHistory } from "react-router-dom";
-
 
 
 export default function Navbar(props) {
@@ -33,13 +32,7 @@ export default function Navbar(props) {
       </>
       <div className="navButtons">
         <Stack direction="row">
-          <IconButton component={Link} to="/user-cabinet">
-            <AccountCircleOutlined color="secondary" fontSize="large" />
-          </IconButton>
-          <IconButton component={Link} to="/messages">
-            <EmailOutlined color="secondary" fontSize="large" />
-          </IconButton>
-          <Button variant="outlined" fontSize="large" component={Link} to="/" typography="fontFamily" > Logout</Button>
+          <Button variant="outlined" fontSize="large" component={Link} to="/" typography="fontFamily" > Registration</Button>
         </Stack>
       </div>
     </div>
