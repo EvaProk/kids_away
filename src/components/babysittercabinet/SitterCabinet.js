@@ -33,7 +33,7 @@ export default function SitterCabinet(props) {
   const [loaded2, setLoaded2] = useState(true);
   const [confirm, setConfirm] = useState("primary");
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState("Confirm");
+  const [status, setStatus] = useState("Created");
 
   const [state, setState] = useState({
     orders: [],
@@ -42,6 +42,8 @@ export default function SitterCabinet(props) {
   useEffect(() => {
     return axios.get("/sitter-cabinet").then((res) => {
       setState((prev) => ({ ...prev, orders: res.data }));
+      setConfirm(res.data[res.data.length-1].status === "created" ? "primary" : "secondary");
+      setStatus(res.data[res.data.length-1].status)
       setLoaded2(false);
     });
   }, []);
@@ -148,7 +150,7 @@ export default function SitterCabinet(props) {
     };
 
     let newInvites = "";
-    const color = order.status === "created" ? "primary" : "secondary";
+    
     console.log("state", state.orders);
     let createdNum = state.orders.filter(
       (order) => order.status === "created"
@@ -225,7 +227,7 @@ export default function SitterCabinet(props) {
                   address={order.address}
                   numChildren={order.num_of_kids}
                   message={order.comment}
-                  status={order.status}
+                  status={status}
                   phone={order.contact_phone}
                   hours={order.hours}
                   onFinish={() => setConfirmWindowOpen(true)}
@@ -234,7 +236,6 @@ export default function SitterCabinet(props) {
                   buttonName="reject order"
                   onSubmit={handleSubmit}
                   color={confirm}
-                  submitName={status}
                 />
                 <RateParent
                   open={confirmWindowOpen}
