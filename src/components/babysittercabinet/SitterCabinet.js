@@ -124,10 +124,13 @@ export default function SitterCabinet(props) {
       console.log("[!]", newSchedule);
       setSchedule(newSchedule);
     };
-
-    const scheduleList = schedule.map((day) => {
+    const dayNames=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+   
+    const scheduleList = schedule.map((day,index) => {
+      const name=dayNames[index]
       return (
         <Grid item xs={6} md={3} lg={3}>
+          <label>{name}</label>
           <ScheduleLine
             item={day}
             day={day.date}
@@ -180,7 +183,8 @@ export default function SitterCabinet(props) {
               {/* <Grid container spacing={2}>
                 <Grid item xs={6} md={4} lg={8}> */}
               <Grid container spacing={1}>
-                {scheduleList}
+                {
+                scheduleList}
               </Grid>
                 {/* <Box sx={{ width: "50%" }}> */}
               <Collapse in={open} sx={{ width: "50%", alignSelf:'center' }}>
