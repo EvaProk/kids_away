@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import PreviousOrderItemSitter from "./PreviousOrderItemSitter";
 
 
 export default function PreviousOrderListSitter(props) {
-const completed = props.orders.filter((order)=> order.status === 'completed').sort((a,b)=> {return new Date(b.date) - new Date(a.date);});
 
+  const completed = props.orders.filter((order)=> order.status === 'completed')//display only completed orders in DESC order
+    .sort((a,b)=> {return new Date(b.date) - new Date(a.date);});
 
   const previousOrders = completed.map((order) => {
     return (

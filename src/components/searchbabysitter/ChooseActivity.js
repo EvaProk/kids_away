@@ -7,12 +7,7 @@ import Button from '@mui/material/Button';
 
 export default function ChooseCity(props) {
   const [open, setOpen] = useState(false);
-  // const [activity, setActivity] = useState(false);
-
-
-  // const handleChange = (event) => {
-  //   setActivity(event.target.value);
-  // };
+ 
   const handleClose = () => {
     setOpen(false);
   };

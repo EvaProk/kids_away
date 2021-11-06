@@ -3,7 +3,6 @@ import "./FirstPage.scss";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
-import logoElefant from "../images/logoImage.webp";
 import "./NavMain.scss";
 import NavMain from './NavMain';
 
@@ -11,16 +10,6 @@ export default function FirstPage(props) {
   return (
     <div>
       <NavMain/>
-      {/* <div className="elefant">
-        <div>
-          <img className="logoImage" src={logoElefant} alt="logoImage"></img>
-          <h2>KidsAway</h2>
-        </div>
-        <div>
-        <Button variant="outlined" fontSize="large" component={Link} to="/logout" typography="fontFamily" > Registration</Button>
-        </div>
-
-      </div> */}
 
       <div className="main">
         <img

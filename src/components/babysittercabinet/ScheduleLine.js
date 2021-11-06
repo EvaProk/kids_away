@@ -12,14 +12,12 @@ import { styled } from '@mui/material/styles';
 
 
 export default function ScheduleLine(props) {
+
   const scheduleLineChanged = (item) => {
     props.scheduleChanged(item);
-  };
-
- 
+  }; 
 
   return (
-
        
     <Paper
     elevation={3}

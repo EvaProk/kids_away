@@ -32,7 +32,6 @@ export default function UserCabinet() {
   }, [setState.orders]);
 
   if (state.loading) {
-    console.log("loading calling", state.loading);
     return <div></div>;
   } else {
 
@@ -41,7 +40,6 @@ export default function UserCabinet() {
     console.log(order);
 
     function deleteOrder(order) {
-      console.log("-------------->", state.orders);
       return axios
         .post(`/delete-order`, null, { params: { order } })
 

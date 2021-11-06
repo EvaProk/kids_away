@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect } from "react";
 import "./BabysitterProfile.scss";
 import StarIcon from "@mui/icons-material/Star";
 import Button from "@mui/material/Button";
@@ -15,7 +15,6 @@ import Navbar from "../Navbar";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import DoneIcon from "@mui/icons-material/Done";
-import CloseIcon from "@mui/icons-material/Close";
 
 export default function BabysitterProfile(props) {
   const { id } = useParams();
@@ -25,10 +24,8 @@ export default function BabysitterProfile(props) {
     loading: true,
   });
 
-  console.log("before use Effect");
   useEffect(() => {
     return axios.get(`/babysitter-profile/${id}`).then((res) => {
-      console.log("I am tired");
       setState((prev) => ({
         ...prev,
         profile: res.data,
@@ -37,16 +34,11 @@ export default function BabysitterProfile(props) {
     });
   }, []);
 
-  if (state.loading) {
-    console.log("loading calling", state.loading);
+  if (state.loading) {//prevent errors because of async axios
     return <div></div>;
   } else {
-    console.log("loading calling", state.loading);
     const reviews = state.profile.review;
     const profile = state.profile.user_prof[0];
-
-    const profileInfo = state.profile.user_prof[0]; // should return user_prof object
-    console.log(profileInfo);
 
     let reviewList =
       reviews &&
@@ -57,9 +49,8 @@ export default function BabysitterProfile(props) {
           comment={rev.comment}
         />
       ));
-    let rate = 0;
+    let rate = 0;//calculate avg rate
     const revRate = reviews.map((rev) => (rate += rev.rate));
-    console.log("revRate", revRate[revRate.length - 1]);
     const avg =
       Math.round((revRate[revRate.length - 1] / reviews.length) * 10) / 10;
 
@@ -163,7 +154,6 @@ export default function BabysitterProfile(props) {
               ></img>
             </div>
 
-
             <div className="generalInfo">
               <div className="separator">
                 <img
@@ -198,10 +188,6 @@ export default function BabysitterProfile(props) {
                 ></img>
               </div>
             </div>
-
-
-
-            
 
             <div className="Reviews" id="about">
               <h2 id="profileHeader">Reviews</h2>

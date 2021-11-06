@@ -1,26 +1,15 @@
-import { React, useState } from "react";
-import Box from "@mui/material/Box";
+import { React } from "react";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import ConfirmBadge from "../confirmorder/ConfirmBadge";
 import Chip from "@mui/material/Chip";
-import DoneIcon from "@mui/icons-material/Done";
 
 
 export default function SitterOrderDetails(props) {
-  // const handleClick = () => {
-  //   console.info("You clicked the Chip.");
-  // };
-
-  // const handleDelete = () => {
-  //   console.info("You clicked the delete icon.");
-  // };
 
   return (
     <Paper

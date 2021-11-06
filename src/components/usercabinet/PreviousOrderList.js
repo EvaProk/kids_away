@@ -16,8 +16,8 @@ export default function PreviousOrderList(props) {
   //                 setState((prev)=>({...prev, previous: res.data}))
   //               })
   // },[setState.fav]);
-  const filtered = props.orders.filter((order)=> order.status === 'completed').sort((a,b)=> {return new Date(b.date) - new Date(a.date);});
-console.log("ffff",filtered);
+  const filtered = props.orders.filter((order)=> order.status === 'completed')
+    .sort((a,b)=> {return new Date(b.date) - new Date(a.date);});
 
   const previousOrders = filtered.map((order) => {
     return (

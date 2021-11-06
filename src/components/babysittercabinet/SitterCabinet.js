@@ -42,8 +42,12 @@ export default function SitterCabinet(props) {
   useEffect(() => {
     return axios.get("/sitter-cabinet").then((res) => {
       setState((prev) => ({ ...prev, orders: res.data }));
-      setConfirm(res.data[res.data.length-1].status === "created" ? "primary" : "secondary");
-      setStatus(res.data[res.data.length-1].status)
+      setConfirm(
+        res.data[res.data.length - 1].status === "created"
+          ? "primary"
+          : "secondary"
+      );
+      setStatus(res.data[res.data.length - 1].status);
       setLoaded2(false);
     });
   }, []);
@@ -61,16 +65,14 @@ export default function SitterCabinet(props) {
     setValue(newValue);
   };
 
-  // handle the delays on loading data
+  // handle the delays on loading data from axios
   if (!loaded && !loaded2) {
     // finds last created order
     const order = state.orders[state.orders.length - 1];
-    console.log("order-------->", order);
 
     //Sitter cancells the order
     const handleCancel = (event) => {
       event.preventDefault();
-
       const status = {
         status: "cancelled",
         id: order.id,
@@ -102,7 +104,7 @@ export default function SitterCabinet(props) {
         });
     };
     //--------------------------->Scheduler
-    const scheduleChanged = (newItem) => {
+    const scheduleChanged = (newItem) => {//user's input of schedule
       let newSchedule = schedule;
       let itemToChange = newSchedule.filter(
         (item) => item.date === newItem.date
@@ -121,13 +123,21 @@ export default function SitterCabinet(props) {
         newSchedule[newSchedule.indexOf(itemToChange)].end_time =
           newItem.end_time;
       }
-      console.log("[!]", newSchedule);
       setSchedule(newSchedule);
     };
-    const dayNames=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-   
-    const scheduleList = schedule.map((day,index) => {
-      const name=dayNames[index]
+    const dayNames = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+
+    const scheduleList = schedule.map((day, index) => {
+      //display day and it name
+      const name = dayNames[index];
       return (
         <Grid item xs={6} md={3} lg={3}>
           <label>{name}</label>
@@ -152,16 +162,14 @@ export default function SitterCabinet(props) {
         });
     };
 
-    let newInvites = "";
-    
-    console.log("state", state.orders);
+    let newInvites = "";//to display +1 new order
     let createdNum = state.orders.filter(
       (order) => order.status === "created"
     ).length;
+
     if (createdNum > 0) {
       newInvites = `+(${createdNum}) new`;
     }
-    console.log("createdNum", newInvites);
 
     return (
       <Box sx={{ width: "100%", typography: "body1" }}>
@@ -173,23 +181,18 @@ export default function SitterCabinet(props) {
           >
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Your week schedule" value="1" />
-              <Tab label={`Current orders     ${newInvites}`} value="2" />
+              <Tab label={`Current orders ${newInvites}`} value="2" />
               <Tab label="Previous Orders" value="3" />
             </TabList>
           </Box>
 
           <TabPanel value="1" className="sch">
-            <Stack direction="column" >
-              {/* <Grid container spacing={2}>
-                <Grid item xs={6} md={4} lg={8}> */}
+            <Stack direction="column">
               <Grid container spacing={1}>
-                {
-                scheduleList}
+                {scheduleList}
               </Grid>
-                {/* <Box sx={{ width: "50%" }}> */}
-              <Collapse in={open} sx={{ width: "50%", alignSelf:'center' }}>
+              <Collapse in={open} sx={{ width: "50%", alignSelf: "center" }}>
                 <Alert
-                  
                   action={
                     <IconButton
                       aria-label="close"
@@ -207,7 +210,6 @@ export default function SitterCabinet(props) {
                   Your schedule was recorded!
                 </Alert>
               </Collapse>
-              {/* </Box> */}
               <Button
                 component={Link}
                 to="/babysitterCabinet"

@@ -23,7 +23,6 @@ import formatDate from "../helpers/formatter";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ConfirmWindow from "../confirmorder/ConfirmWindow";
-import UserCabinet from "../usercabinet/UserCabinet";
 // import { Redirect } from 'react-router'
 
 export default function DialogWindow() {
@@ -56,8 +55,6 @@ export default function DialogWindow() {
     return axios
       .post("/neworder", null, { params: { order } })
       .then((response) => {
-        console.log(response);
-
         if (response.status === 200) {
           setConfirmWindowOpen(true);
         }

@@ -1,13 +1,9 @@
-import { React, useState } from "react";
+import { React } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
-import { Link } from "react-router-dom";
-import { CardActionArea } from "@mui/material";
-import Stack from "@mui/material/Stack";
 
 
 export default function PreviousOrderItemSitter(props) {
@@ -36,16 +32,6 @@ export default function PreviousOrderItemSitter(props) {
           <Rating name="read-only" value={props.rate} size="small" readOnly />
         </CardContent>
       </Box>
-      {/* <Stack>  */}
-      {/* <CardActionArea component={Link} to={`/babysitter-profile/${props.id}`}>
-        <CardMedia
-          component="img"
-          sx={{ width: 151 }}
-          image={props.photo}
-          alt="babysitterPhoto"
-        />
-      </CardActionArea> */}
-      {/* </Stack> */}
     </Card>
   );
 }
