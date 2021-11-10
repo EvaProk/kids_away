@@ -1,8 +1,8 @@
-import * as React from 'react';
+import  React from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import DoneIcon from '@mui/icons-material/Done';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 
 export default function ConfirmBadge(props) {
   const handleClick = () => {

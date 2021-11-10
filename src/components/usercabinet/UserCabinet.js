@@ -13,7 +13,6 @@ import PreviousOrderList from "./PreviousOrderList";
 import Navbar from '../Navbar'
 import axios from "axios";
 import formatDate from "../helpers/formatter";
-import Stack from "@mui/material/Stack";
 
 
 export default function UserCabinet() {

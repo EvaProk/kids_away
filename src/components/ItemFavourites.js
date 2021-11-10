@@ -11,7 +11,7 @@ return (
     </header>
     <div className='middle_item_fav'>
       <div >
-        <img src={props.photo} className='photo'></img>
+        <img src={props.photo} alt='fave' className='photo'></img>
       </div>
       <div>
       <EmailOutlined color="secondary" fontSize="large" />

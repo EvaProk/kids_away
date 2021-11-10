@@ -1,4 +1,4 @@
-import {React ,useState} from "react";
+import React from "react";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,11 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 export default function ChooseAge(props) {
-  //const [value, setValue] = useState('0-2 y.o');
-
-  // const handleChange = (event) => {
-  //   setValue(event.target.value);
-  // };
+  
 
   return (
     <FormControl component="fieldset" >

@@ -4,12 +4,9 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./BabysitterProfile.scss";
-
-
 
 import ChooseDate from "../searchbabysitter/ChooseDate";
 import ChooseStartTime from "../searchbabysitter/ChooseStartTime";
@@ -23,7 +20,6 @@ import formatDate from "../helpers/formatter";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ConfirmWindow from "../confirmorder/ConfirmWindow";
-// import { Redirect } from 'react-router'
 
 export default function DialogWindow() {
   const { id } = useParams();
@@ -75,65 +71,73 @@ export default function DialogWindow() {
         Invite Babysitter
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        
         <DialogTitle>Invite Babysitter</DialogTitle>
         <DialogContent>
-        <Stack direction="column" spacing={2}>      
-          <ChooseDate value={localStorage.getItem("date")} disabled />
-          <Stack spacing={3} direction="row">
-            <ChooseStartTime value={localStorage.getItem("startTime")} disabled readOnly/>
-            <ChooseEndTime value={localStorage.getItem("endTime")} disabled readOnly />
+          <Stack direction="column" spacing={2}>
+            <ChooseDate value={localStorage.getItem("date")} disabled />
+            <Stack spacing={3} direction="row">
+              <ChooseStartTime
+                value={localStorage.getItem("startTime")}
+                disabled
+                readOnly
+              />
+              <ChooseEndTime
+                value={localStorage.getItem("endTime")}
+                disabled
+                readOnly
+              />
+            </Stack>
+            <ChooseAge value={localStorage.getItem("age")} disabled />
+            <ChooseLanguage
+              value={localStorage.getItem("language")}
+              disabled
+              readOnly
+            />
+            <ChooseChildren
+              value={number}
+              onChange={(event) => setNumber(event.target.value)}
+            />
+
+            <ChooseActivity
+              value={activity}
+              onChange={(event) => setActivity(event.target.value)}
+            />
+
+            <TextField
+              autoFocus
+              margin="dense"
+              id="address"
+              label="Address"
+              type="text"
+              fullWidth
+              variant="standard"
+              value={address}
+              onChange={(event) => setAddress(event.target.value)}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="Message"
+              label="Message"
+              type="text"
+              fullWidth
+              variant="standard"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+            />
+
+            <TextField
+              autoFocus
+              margin="dense"
+              id="Phone"
+              label="phone"
+              type="text"
+              fullWidth
+              variant="standard"
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+            />
           </Stack>
-
-          <ChooseAge value={localStorage.getItem("age")} disabled/>
-
-          <ChooseLanguage value={localStorage.getItem("language")} disabled readOnly/>
-
-          <ChooseChildren
-            value={number}
-            onChange={(event) => setNumber(event.target.value)}
-          />
-
-          <ChooseActivity
-            value={activity}
-            onChange={(event) => setActivity(event.target.value)}
-          />
-
-          <TextField
-            autoFocus
-            margin="dense"
-            id="address"
-            label="Address"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="Message"
-            label="Message"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-          />
-
-          <TextField
-            autoFocus
-            margin="dense"
-            id="Phone"
-            label="phone"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-          />
-           </Stack>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

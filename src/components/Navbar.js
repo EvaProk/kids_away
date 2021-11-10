@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.scss";
 import Button from '@mui/material/Button';
-import { AccountCircleOutlined , FavoriteBorderOutlined , EmailOutlined } from '@mui/icons-material';
+import { AccountCircleOutlined , EmailOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';

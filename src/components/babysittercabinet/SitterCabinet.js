@@ -7,7 +7,6 @@ import TabPanel from "@mui/lab/TabPanel";
 import SitterOrderDetails from "./SitterOrderDetails";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import Typography from "@mui/material/Typography";
 import axios from "axios";
 import "./SitterCabinet.css";
 import ScheduleLine from "./ScheduleLine";
@@ -16,8 +15,6 @@ import formatDate from "../helpers/formatter";
 import RateParent from "./RateParent";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
-
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";

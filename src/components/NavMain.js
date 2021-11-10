@@ -1,10 +1,8 @@
 import React from "react";
 import "./NavMain.scss";
 import Button from '@mui/material/Button';
-import { AccountCircleOutlined , FavoriteBorderOutlined , EmailOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import IconButton from '@mui/material/IconButton';
 import logoElefant from '../images/logoImage.webp'
 import { useHistory } from "react-router-dom";
 

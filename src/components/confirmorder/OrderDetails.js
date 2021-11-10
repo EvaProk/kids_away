@@ -1,26 +1,16 @@
-import { React, useState } from "react";
-import Box from "@mui/material/Box";
+import  React from "react";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import ConfirmBadge from "../confirmorder/ConfirmBadge";
 import Chip from "@mui/material/Chip";
-import DoneIcon from "@mui/icons-material/Done";
+
 
 export default function OrderDetails(props) {
-  // const handleClick = () => {
-  //   console.info("You clicked the Chip.");
-  // };
-
-  // const handleDelete = () => {
-  //   console.info("You clicked the delete icon.");
-  // };
-
+  
   return (
     <Paper
       elevation={3}
@@ -33,7 +23,6 @@ export default function OrderDetails(props) {
           spacing={13}
           style={{
             justifyContent: "space-between",
-            // alignItems: "flex-end",
             display: "flex",
             margin: "20px",
           }}
@@ -48,7 +37,6 @@ export default function OrderDetails(props) {
              style={{
               width: "7rem"
             }}
-           
           />
         </Stack>
 
@@ -64,13 +52,6 @@ export default function OrderDetails(props) {
             {props.startTime}-{props.endTime}
           </Typography>
         </ListItem>
-{/* 
-        <ListItem>
-          <ListItemText primary="3. Age of children " />
-          <Typography color="primary" style={{ fontWeight: 600 }}>
-            text text text
-          </Typography>
-        </ListItem> */}
 
         <ListItem>
           <ListItemText primary="3. Number of children " />
@@ -79,12 +60,6 @@ export default function OrderDetails(props) {
           </Typography>
         </ListItem>
 
-        {/* <ListItem>
-          <ListItemText primary="5. Language " />
-          <Typography color="primary" style={{ fontWeight: 600 }}>
-            text text text
-          </Typography>
-        </ListItem> */}
 
         <ListItem>
           <ListItemText primary="4. Phone" />

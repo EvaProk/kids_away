@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "./BabysitterProfile.scss";
 import StarIcon from "@mui/icons-material/Star";
-import Button from "@mui/material/Button";
 import HourlyRate from "../babysitterprofile/HourlyRate";
 import ServicesCard from "../babysitterprofile/ServicesCard";
 //import { Link } from "react-router-dom";
@@ -34,7 +33,8 @@ export default function BabysitterProfile(props) {
     });
   }, []);
 
-  if (state.loading) {//prevent errors because of async axios
+  if (state.loading) {
+    //prevent errors because of async axios
     return <div></div>;
   } else {
     const reviews = state.profile.review;
@@ -49,7 +49,7 @@ export default function BabysitterProfile(props) {
           comment={rev.comment}
         />
       ));
-    let rate = 0;//calculate avg rate
+    let rate = 0; //calculate avg rate
     const revRate = reviews.map((rev) => (rate += rev.rate));
     const avg =
       Math.round((revRate[revRate.length - 1] / reviews.length) * 10) / 10;
